@@ -7,7 +7,6 @@
 ### Sumário 
 
 1. Criando primeiro projeto
-1. Executando App no IOS
 1. Criando meu primeiro App
 1. Aprenda Dart do zero
 1. Dart Intermediário e avançado
