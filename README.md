@@ -23,6 +23,6 @@
 * Flutter
 * Visual Studio Code
 
-## [Referência Bibliográfica]
+## Referência Bibliográfica
 
 * Dart [dart.dev](https://dart.dev/guides)
