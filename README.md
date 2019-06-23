@@ -16,6 +16,7 @@
 1. Consumo de serviço web
 1. Manipulação de dados
 1. Mídias
+1. Firebase
 
 
 ## Recursos utilizados
