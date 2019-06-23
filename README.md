@@ -16,3 +16,13 @@
 1. Consumo de serviço web
 1. Manipulação de dados
 1. Mídias
+
+
+## Recursos utilizados
+* DartPad - editor online para linguagem Dart [dartpad.dartlang.org](https://dartpad.dartlang.org/)
+* Flutter
+* Visual Studio Code
+
+## [Referência Bibliográfica]
+
+* Dart [dart.dev](https://dart.dev/guides)
