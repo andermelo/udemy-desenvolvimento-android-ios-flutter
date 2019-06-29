@@ -10,6 +10,17 @@
 1. Aprenda Dart do zero
     1. [Funções](https://gist.github.com/andermelo/4e4b32f8b240d7bb5d829f141113392c#file-funcoes-dart)
     1. [Funções anônimas & parâmetros](https://gist.github.com/andermelo/4e4b32f8b240d7bb5d829f141113392c#file-funcoes-dart)
+    1. [Classes e objetos](https://gist.github.com/andermelo/)
+    1. [Construtores](https://gist.github.com/andermelo/)
+    1. [Getter e Setter](https://gist.github.com/andermelo/)
+    1. [Herança](https://gist.github.com/andermelo/)
+    1. [Sobrescrita de métodos](https://gist.github.com/andermelo/)
+    1. [Modificadores Static e Final](https://gist.github.com/andermelo/)
+    1. [Classes abstratas](https://gist.github.com/andermelo/)
+    1. [Interface](https://gist.github.com/andermelo/)
+    1. [Mixins](https://gist.github.com/andermelo/)
+    1. [Coleções - listas](https://gist.github.com/andermelo/)
+    1. [Coleções - mapas](https://gist.github.com/andermelo/)
 1. Dart Intermediário e avançado
 1. Resumo da Linguagem Dart
 1. Componentes de interface
