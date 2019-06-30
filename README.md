@@ -34,7 +34,7 @@
 
 ## Recursos utilizados
 * DartPad - editor online para linguagem Dart [dartpad.dartlang.org](https://dartpad.dartlang.org/)
-* Flutter
+* [Flutter](https://flutter.dev/docs)
 * Visual Studio Code
 
 ## Referência Bibliográfica
