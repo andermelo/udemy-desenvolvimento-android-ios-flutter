@@ -30,6 +30,8 @@
 1. Manipulação de dados
 1. Mídias
 1. Firebase
+1. [Recursos utilizados](#recursos-utilizados)
+1. [Referência bibliográfica](#referencias-bibliografica)
 
 
 ## Recursos utilizados
