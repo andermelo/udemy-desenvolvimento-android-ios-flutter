@@ -31,7 +31,7 @@
 1. Mídias
 1. Firebase
 1. [Recursos utilizados](#recursos-utilizados)
-1. [Referência bibliográfica](#referencias-bibliografica)
+1. [Referência bibliográfica](#referências-bibliográfica)
 
 
 ## Recursos utilizados
