@@ -40,3 +40,4 @@
 ## Referência Bibliográfica
 
 * Dart [dart.dev](https://dart.dev/guides)
+* Flutter [flutter.dev](https://flutter.dev/docs)
