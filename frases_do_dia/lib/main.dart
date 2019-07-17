@@ -9,19 +9,23 @@ void main(){
       color: Colors.white,
       child: Column(
           children: <Widget>[
-          Text(
-              "Mussum Ipsum",
-              style: TextStyle(
-                fontSize: 50,
-                fontStyle: FontStyle.italic,
-                fontWeight: FontWeight.normal,
-                letterSpacing: 0,
-                wordSpacing: 0,
-                decoration: TextDecoration.underline,
-                decorationColor: Colors.black,
-                decorationStyle: TextDecorationStyle.solid,
-                color: Colors.blue),
-            ),
+            FlatButton(
+                onPressed: (){
+
+                  int numero = 5;
+                  int numero2 = 10;
+                  int result = numero + numero2;
+
+                  print(result);
+                }, 
+                child: Text("Botão",
+                  style: TextStyle(
+                      fontSize: 40,
+                      color: Colors.black,
+                      decoration: TextDecoration.none                      
+                    ),
+                )
+              )
           ],
         ),
     ),
