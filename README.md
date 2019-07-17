@@ -24,6 +24,8 @@
     1. [Coleções - mapas](https://gist.github.com/andermelo/)
 1. Resumo da Linguagem Dart
 1. Componentes de interface
+    1. Colunas e linhas
+    1. [Formatação de textos]()
 1. Componentes de entrada de dados
 1. Navegação
 1. Consumo de serviço web
@@ -34,7 +36,36 @@
 1. [Recursos utilizados](#recursos-utilizados)
 1. [Referência bibliográfica](#referência-bibliográfica)
 
+## Formatação de textos
+```dart
+import 'package:flutter/material.dart';
 
+void main(){
+  runApp(MaterialApp(
+    title: "Frases do dia",
+    home: Container(
+      color: Colors.white,
+      child: Column(
+          children: <Widget>[
+          Text(
+              "Mussum Ipsum",
+              style: TextStyle(
+                fontSize: 50,
+                fontStyle: FontStyle.italic,
+                fontWeight: FontWeight.normal,
+                letterSpacing: 0,
+                wordSpacing: 0,
+                decoration: TextDecoration.underline,
+                decorationColor: Colors.black,
+                decorationStyle: TextDecorationStyle.solid,
+                color: Colors.blue),
+            ),
+          ],
+        ),
+    ),
+  ));
+}
+```
 ## Recursos utilizados
 * DartPad - editor online para linguagem Dart [dartpad.dartlang.org](https://dartpad.dartlang.org/)
 * [Flutter](https://flutter.dev/docs)
