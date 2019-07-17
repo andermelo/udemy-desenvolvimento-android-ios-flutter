@@ -26,7 +26,7 @@
 1. Componentes de interface
     1. Colunas e linhas
     1. [Formatação de textos](#formatação-de-textos)
-    1. [Botões](#botoes)
+    1. [Botões](#botões)
 1. Componentes de entrada de dados
 1. Navegação
 1. Consumo de serviço web
