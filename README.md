@@ -26,6 +26,7 @@
 1. Componentes de interface
     1. Colunas e linhas
     1. [Formatação de textos](#formatação-de-textos)
+    1. [Botões](#botoes)
 1. Componentes de entrada de dados
 1. Navegação
 1. Consumo de serviço web
@@ -66,6 +67,37 @@ void main(){
   ));
 }
 ```
+
+## Botões
+```dart
+import 'package:flutter/material.dart';
+
+void main(){
+  runApp(MaterialApp(
+    title: "Frases do dia",
+    home: Container(
+      color: Colors.white,
+      child: Column(
+          children: <Widget>[
+            FlatButton(
+                onPressed: (){
+                  print("botao pressionado");
+                }, 
+                child: Text("Botão",
+                  style: TextStyle(
+                      fontSize: 40,
+                      color: Colors.black,
+                      decoration: TextDecoration.none                      
+                    ),
+                )
+              )
+          ],
+        ),
+    ),
+  ));
+}
+```
+
 ## Recursos utilizados
 * DartPad - editor online para linguagem Dart [dartpad.dartlang.org](https://dartpad.dartlang.org/)
 * [Flutter](https://flutter.dev/docs)
