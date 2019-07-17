@@ -27,6 +27,8 @@
     1. Colunas e linhas
     1. [Formatação de textos](#formatação-de-textos)
     1. [Botões](#botões)
+    1. [Espaçamento](#espaçamento)
+    1. [Alinhamento](#alinhamento)
 1. Componentes de entrada de dados
 1. Navegação
 1. Consumo de serviço web
@@ -96,6 +98,47 @@ void main(){
     ),
   ));
 }
+```
+## Espaçamento
+```dart
+import 'package:flutter/material.dart';
+
+void main(){
+  runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
+    title: "Frases do dia",
+    home: Container(
+      padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+      // margin: EdgeInsets.all(30),
+      margin: EdgeInsets.only(top: 50),
+      decoration: BoxDecoration(
+        border: Border.all(width: 3, color: Colors.white)
+      ),
+      // color: Colors.white,
+      child: Column(
+          children: <Widget>[
+            Text("t1"),
+
+            Padding(
+              padding: EdgeInsets.all(30),
+              child: Text("t2"),
+            ),
+
+            Text("t3"),
+            // Text(
+            //   "Manduma pindureta quium dia nois paga. Todo mundo vê os porris que eu tomo, mas ninguém vê os tombis que eu levo!",
+            //   textAlign: TextAlign.justify,
+            // )
+          ],
+        ),
+    ),
+  ));
+}
+```
+
+## Alinhamento
+```dart
+
 ```
 
 ## Recursos utilizados
