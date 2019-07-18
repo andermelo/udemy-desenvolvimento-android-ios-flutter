@@ -30,6 +30,7 @@
     1. [Espaçamento](#espaçamento)
     1. [Alinhamento](#alinhamento)
     1. [Imagens](#imagens)
+    1. [Layout base com Scaffold](layout-base-com-scaffold)
 1. Componentes de entrada de dados
 1. Navegação
 1. Consumo de serviço web
@@ -198,6 +199,11 @@ void main(){
 }
 ```
 > Mais em [flutter.dev/.../images-class.html](https://api.flutter.dev/flutter/widgets/Image-class.html)
+
+##  Layout base com Scaffold
+```dart
+
+```
 
 ## Recursos utilizados
 * DartPad - editor online para linguagem Dart [dartpad.dartlang.org](https://dartpad.dartlang.org/)
