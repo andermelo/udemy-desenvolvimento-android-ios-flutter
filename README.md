@@ -197,6 +197,7 @@ void main(){
   ));
 }
 ```
+> Mais em [flutter.dev/.../images-class.html](https://api.flutter.dev/flutter/widgets/Image-class.html)
 
 ## Recursos utilizados
 * DartPad - editor online para linguagem Dart [dartpad.dartlang.org](https://dartpad.dartlang.org/)
