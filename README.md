@@ -166,8 +166,36 @@ void main(){
 ```
 
 ## Imagens
-```dart
+> É necessário alterar o arquivo `pubspec.yaml` para incluir as imagens no projeto primeiro
 
+```
+...
+  assets:
+    - images/mesa.jpg
+    - images/parque.jpg
+...
+```
+
+```dart
+import 'package:flutter/material.dart';
+
+void main(){
+  runApp(MaterialApp(
+    debugShowCheckedModeBanner: false, // retirar aviso debug
+    title: "Frases do dia",
+    home: Container(
+      margin: EdgeInsets.only(top: 40),
+      decoration: BoxDecoration(
+        border: Border.all(width: 3, color: Colors.white)
+      ),
+      // color: Colors.white,
+      child: Image.asset(
+        "images/mesa.jpg",
+        fit: BoxFit.scaleDown,
+      ),
+    ),
+  ));
+}
 ```
 
 ## Recursos utilizados
