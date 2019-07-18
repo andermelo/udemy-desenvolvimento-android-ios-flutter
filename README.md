@@ -29,6 +29,7 @@
     1. [Botões](#botões)
     1. [Espaçamento](#espaçamento)
     1. [Alinhamento](#alinhamento)
+    1. [Imagens](#imagens)
 1. Componentes de entrada de dados
 1. Navegação
 1. Consumo de serviço web
@@ -137,6 +138,34 @@ void main(){
 ```
 
 ## Alinhamento
+```dart
+import 'package:flutter/material.dart';
+
+void main(){
+  runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
+    title: "Frases do dia",
+    home: Container(
+      margin: EdgeInsets.only(top: 40),
+      decoration: BoxDecoration(
+        border: Border.all(width: 3, color: Colors.white)
+      ),
+      // color: Colors.white,
+      child: Column(
+          children: <Widget>[
+            Text("Salsicha"),
+            Text("Batata"),
+            Text("Frango"),
+          ],
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
+        ),
+    ),
+  ));
+}
+```
+
+## Imagens
 ```dart
 
 ```
