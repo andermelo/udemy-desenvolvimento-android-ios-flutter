@@ -32,6 +32,8 @@
     1. [Imagens](#imagens)
     1. [Layout base com Scaffold](#layout-base-com-scaffold)
     1. [Widgets - Stateless & Stateful](#widgets---stateless--stateful)
+    1. [App 1 Frases do Dia](frases_do_dia/)
+    1. [App 2 JokenPo](/jokenpo)
 1. Componentes de entrada de dados
 1. Navegação
 1. Consumo de serviço web
