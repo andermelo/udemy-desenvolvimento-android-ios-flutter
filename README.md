@@ -31,7 +31,7 @@
     1. [Alinhamento](#alinhamento)
     1. [Imagens](#imagens)
     1. [Layout base com Scaffold](#layout-base-com-scaffold)
-    1. [Widgets - Stateless & Stateful](#widgets-stateless-stateful)
+    1. [Widgets - Stateless & Stateful](#widgets---stateless--stateful)
 1. Componentes de entrada de dados
 1. Navegação
 1. Consumo de serviço web
@@ -237,11 +237,11 @@ void main(){
 
 ## Widgets - Stateless & Stateful
 
-> Stateless -> Widgets que não podem ser alterados
-> Stateful -> Widgets que podem ser alterados
+> Stateless -> Widgets que não podem ser alterados (constantes)
+![Stateless](assets/images/exemplo-stateless.gif)
 
-```dart
-```
+> Stateful -> Widgets que podem ser alterados (variáveis)
+![Stateful](assets/images/exemplo-stateful.gif)
 
 ## Recursos utilizados
 * DartPad - editor online para linguagem Dart [dartpad.dartlang.org](https://dartpad.dartlang.org/)
