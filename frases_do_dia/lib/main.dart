@@ -2,48 +2,61 @@ import 'package:flutter/material.dart';
 
 void main(){
   runApp(MaterialApp(
-    debugShowCheckedModeBanner: false, // retirar aviso debug
-    home: HomeStateful(),
+    home: Home(),
+    debugShowCheckedModeBanner: false,
   ));
 }
 
-class HomeStateful extends StatefulWidget {
+class Home extends StatefulWidget {
   @override
-  _HomeStatefulState createState() => _HomeStatefulState();
+  _HomeState createState() => _HomeState();
 }
 
-class _HomeStatefulState extends State<HomeStateful> {
-
-  var _texto = "Anderson Melo";
-
+class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    
-    print("build foi chamado");
-
     return Scaffold(
       appBar: AppBar(
-        title: Text("Título do App"),
-        backgroundColor: Colors.blue,
+        title: Text("Frases do Dia"),
+        backgroundColor: Colors.green,
       ),
-      body: Container(
-        child: Column(
-          children: <Widget>[
-            RaisedButton(
-              onPressed: (){
-                setState(() {
-                  _texto = "Flutter é legal"; 
-                });
-                // print("Clicado");
-              },
-              color: Colors.amber,
-              child: Text("clique aqui"),
-            ),
-            Text("Nome: $_texto ")
-          ],
+      body: Center(
+        child: Container(
+          // width: double.infinity,
+          padding: EdgeInsets.all(16),
+          // decoration: BoxDecoration(
+          //   border: Border.all(width: 3,color: Colors.amber)
+          // ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Image.asset("images/logo.png"),
+              Text(
+                "Clique abaixo para gerar uma frase",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 25,
+                  fontStyle: FontStyle.italic,
+                  color: Colors.black
+                ),
+              ),
+              RaisedButton(
+                child: Text(
+                  "Nova Frase",
+                  style: TextStyle(
+                    fontSize: 25,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                color: Colors.green,
+                onPressed: (){},
+              ),
+            ],
+          ),
         ),
-      ),
+      )
     );
   }
 }
-
