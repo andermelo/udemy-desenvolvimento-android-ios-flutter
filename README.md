@@ -238,9 +238,11 @@ void main(){
 ## Widgets - Stateless & Stateful
 
 > Stateless -> Widgets que não podem ser alterados (constantes)
+
 ![Stateless](assets/images/exemplo-stateless.gif)
 
 > Stateful -> Widgets que podem ser alterados (variáveis)
+
 ![Stateful](assets/images/exemplo-stateful.gif)
 
 ## Recursos utilizados
