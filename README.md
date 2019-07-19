@@ -30,7 +30,8 @@
     1. [Espaçamento](#espaçamento)
     1. [Alinhamento](#alinhamento)
     1. [Imagens](#imagens)
-    1. [Layout base com Scaffold](layout-base-com-scaffold)
+    1. [Layout base com Scaffold](#layout-base-com-scaffold)
+    1. [Widgets - Stateless & Stateful](#widgets-stateless-stateful)
 1. Componentes de entrada de dados
 1. Navegação
 1. Consumo de serviço web
@@ -201,8 +202,45 @@ void main(){
 > Mais em [flutter.dev/.../images-class.html](https://api.flutter.dev/flutter/widgets/Image-class.html)
 
 ##  Layout base com Scaffold
-```dart
+> Scaffold class layout base para o seu app
 
+```dart
+import 'package:flutter/material.dart';
+
+void main(){
+  runApp(MaterialApp(
+    debugShowCheckedModeBanner: false, // retirar aviso debug
+    home: Scaffold(
+      appBar: AppBar(
+        title: Text("Título do App na Classe AppBar"),
+        backgroundColor: Colors.blue,
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(15),
+        child: Text("Conteúdo principal"),
+      ),
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.lightBlue,
+        child: Padding(
+            padding: EdgeInsets.all(15),
+            child: Row(
+              children: <Widget>[
+                Text("Conteúdo na Classe BottomAppBar"),
+              ],
+            ),
+          ),
+      ),
+    ),
+  ));
+}
+```
+
+## Widgets - Stateless & Stateful
+
+> Stateless -> Widgets que não podem ser alterados
+> Stateful -> Widgets que podem ser alterados
+
+```dart
 ```
 
 ## Recursos utilizados
