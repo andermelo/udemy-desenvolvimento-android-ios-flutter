@@ -37,7 +37,7 @@
 1. Componentes de entrada de dados
     1. [Utilizando caixas de texto](entrada_dados/lib/CampoTexto.dart)
     1. [App 3 Etanol ou Gasolina](alcool_ou_gasolina/)
-    1. [Utilizando Checkbox](#)
+    1. [Utilizando Checkbox](entrada_dados/lib/EntradaCheckbox.dart)
     1. [Utilizando RadioButton](#)
     1. [Utilizando Switch](#)
     1. [Utilizando Slider](#)
