@@ -20,7 +20,7 @@ class _EntradaCheckboxState extends State<EntradaCheckbox> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-
+            
             CheckboxListTile(
               title: Text("Comida Brasileira"),
               subtitle: Text("Uma das melhores comida do mundo"),
@@ -39,7 +39,7 @@ class _EntradaCheckboxState extends State<EntradaCheckbox> {
               subtitle: Text("Uma das melhores comida do mundo"),
               activeColor: Colors.amber,
               // selected: true,
-              secondary: Icon(Icons.add_box),
+              secondary: Icon(Icons.add_box), // adicionar icone
               value: _comidaMexicana,
               onChanged: (bool valor){
                 setState(() {
@@ -51,22 +51,22 @@ class _EntradaCheckboxState extends State<EntradaCheckbox> {
             Padding(
               padding: EdgeInsets.all(20),
               child: RaisedButton(
-              color: Colors.blue,
-              padding: EdgeInsets.only(top: 15, bottom: 15),
-              child: Text(
-                "Salvar",
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.white,
+                color: Colors.blue,
+                padding: EdgeInsets.only(top: 15, bottom: 15),
+                child: Text(
+                  "Salvar".toUpperCase(),
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                  ),
                 ),
+                onPressed: (){
+                  print(
+                    "Comida Brasileira: " + _comidaBrasileira.toString() + " "
+                    "Comida Mexicana: " + _comidaMexicana.toString() 
+                  );
+                },
               ),
-              onPressed: (){
-                print(
-                  "Comida Brasileira: " + _comidaBrasileira.toString() + " "
-                  "Comida Mexicana: " + _comidaMexicana.toString() 
-                );
-              },
-            ),
             )
 
             // Padding(
