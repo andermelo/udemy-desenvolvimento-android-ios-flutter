@@ -35,6 +35,12 @@
     1. [App 1 Frases do Dia](frases_do_dia/)
     1. [App 2 JokenPo](/jokenpo)
 1. Componentes de entrada de dados
+    1. [Utilizando caixas de texto](entrada_dados/)
+    1. [App 3 Etanol ou Gasolina](alcool_ou_gasolina/)
+    1. [Utilizando Checkbox](#)
+    1. [Utilizando RadioButton](#)
+    1. [Utilizando Switch](#)
+    1. [Utilizando Slider](#)
 1. Navegação
 1. Consumo de serviço web
 1. Manipulação de dados
