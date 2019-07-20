@@ -45,6 +45,7 @@
     1. [Navegando entre telas](#)
     1. [App 4 ATM Consultoria](#)
     1. [Passando dados entre telas](#)
+    1. [App 5 Cara ou Coroa](#)
     1. [Nomeando rotas](#)
 1. Consumo de serviço web
 1. Manipulação de dados
