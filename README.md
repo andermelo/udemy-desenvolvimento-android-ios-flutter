@@ -38,9 +38,9 @@
     1. [Utilizando caixas de texto](entrada_dados/lib/CampoTexto.dart)
     1. [App 3 Etanol ou Gasolina](alcool_ou_gasolina/)
     1. [Utilizando Checkbox](entrada_dados/lib/EntradaCheckbox.dart)
-    1. [Utilizando RadioButton](#)
-    1. [Utilizando Switch](#)
-    1. [Utilizando Slider](#)
+    1. [Utilizando RadioButton](entrada_dados/lib/EntradaRadioButton.dart)
+    1. [Utilizando Switch](entrada_dados/lib/EntradaSwitch.dart)
+    1. [Utilizando Slider](entrada_dados/lib/EntradaSlider.dart)
 1. Navegação
 1. Consumo de serviço web
 1. Manipulação de dados
