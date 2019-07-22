@@ -52,7 +52,7 @@
     1. [Exibindo retorno da requisição na interface](consumo_servicos/lib/Home.dart)
     1. [#App6 Preço do bitcoin](preco_bitcoin/)
     1. [Utilizando listas (ListView)](utilizando_listas/)
-        1. [Eventos de clique & exibir dialog (AlertDialog)](#)
+        - [Eventos de clique & exibir dialog (AlertDialog)](#)
     1. [Trabalhando com Future](#)
     1. [Carregando dados em uma lista (ListView)](#)
     1. [Requisição Post & Widget Expanded](#)
