@@ -48,10 +48,9 @@
     1. [App 5 Cara ou Coroa](cara_coroa/)
     1. [Nomeando rotas](/navegacao/lib/main.dart#L7)
 1. Consumo de serviço web
-    1. [Criando requisições]()
-    
-    1. [Exibindo retorno da requisição na interface](#)
-    1. [#App6 Preço do bitcoin](#)
+    1. [Criando requisições](consumo_servicos/lib/Home.dart#L28)    
+    1. [Exibindo retorno da requisição na interface](consumo_servicos/lib/Home.dart)
+    1. [#App6 Preço do bitcoin](preco_bitcoin/)
     1. [Utilizando listas (ListView)](#)
     1. [Eventos de clique & exibir dialog (AlertDialog)](#)
     1. [Trabalhando com Future](#)
