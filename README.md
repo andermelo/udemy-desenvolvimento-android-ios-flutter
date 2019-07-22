@@ -46,7 +46,7 @@
     1. [App 4 ATM Consultoria](atm_consultoria/)
     1. [Passando dados entre telas](dados_entre_telas/)
     1. [App 5 Cara ou Coroa](cara_coroa/)
-    1. [Nomeando rotas](nomeando_rotas/)
+    1. [Nomeando rotas](/navegacao/lib/main.dart#L7)
 1. Consumo de serviço web
 1. Manipulação de dados
 1. Mídias
