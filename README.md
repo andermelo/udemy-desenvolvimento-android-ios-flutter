@@ -48,7 +48,28 @@
     1. [App 5 Cara ou Coroa](cara_coroa/)
     1. [Nomeando rotas](/navegacao/lib/main.dart#L7)
 1. Consumo de serviço web
-    1. []()
+    1. [Criando requisições]()
+    
+    1. [Exibindo retorno da requisição na interface](#)
+    1. [#App6 Preço do bitcoin](#)
+    1. [Utilizando listas (ListView)](#)
+    1. [Eventos de clique & exibir dialog (AlertDialog)](#)
+    1. [Trabalhando com Future](#)
+    1. [Carregando dados em uma lista (ListView)](#)
+    1. [Requisição Post & Widget Expanded](#)
+    1. [Requisições Put, Patch e Delete](#)
+    1. [#App7 Youtube](#) 
+        - [Botões de ação](#)
+        - [Navegação inferior (BottomNavigationBar)](#)
+        - [Ativando API](#)
+        - [Recuperando vídeos](#)
+        - [Convertendo resultados](#)
+        - [Exibindo vídeos em uma lista (ListView)](#)
+        - [Utilizando componente de pesquisa (SearchDelegate)](#)
+        - [Recuperando textos para pesquisa & Sugestões](#)
+        - [Executando vídeos](#)
+    1. [Ciclo de vida Statefull Widget](#)
+
 1. Manipulação de dados
 1. Mídias
 1. Firebase
