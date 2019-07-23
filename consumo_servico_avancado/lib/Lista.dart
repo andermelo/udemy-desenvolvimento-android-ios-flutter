@@ -31,9 +31,7 @@ class _ListaState extends State<Lista> {
 
     return postagens;
     // print(postagens.toString());
- 
   }
-  
 
   @override
   Widget build(BuildContext context) {

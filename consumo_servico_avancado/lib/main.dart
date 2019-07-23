@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'Lista.dart';
+import 'RequisaoPost.dart';
 
 void main(){
   runApp(
     MaterialApp(
-      home: Lista(),
+      home: RequisaoPost(),
       debugShowCheckedModeBanner: false,
     )
   );
