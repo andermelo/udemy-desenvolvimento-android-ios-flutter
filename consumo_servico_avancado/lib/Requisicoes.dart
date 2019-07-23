@@ -37,15 +37,15 @@ class _RequisicoesState extends State<Requisicoes> {
    
    var corpo = json.encode(
       {
-        "userId": 1,
+        "userId": 2,
         "id": null,
-        "title": "",
-        "body": ""
+        "title": "Título",
+        "body": "Corpo dapostagem"
       }  
    );
 
    http.Response response = await http.post(
-     _urlBase + "/posts",
+     _urlBase + "/posts/2",
      headers: {"Content-type": "application/json; charset=UTF-8"},
      body: corpo
    );
@@ -54,6 +54,62 @@ class _RequisicoesState extends State<Requisicoes> {
    print("respota: ${response.body}");
 
   }
+
+  _put() async{
+
+    // PUT atualizar o objeto todo
+
+        var corpo = json.encode(
+            {
+              "userId": 120,
+              "id": null,
+              "title": "Título alterado",
+              "body": "Corpo dapostagem alterado"
+            }  
+        );
+
+        http.Response response = await http.put(
+          _urlBase + "/posts/2",
+          headers: {"Content-type": "application/json; charset=UTF-8"},
+          body: corpo
+        );
+
+        print("resposta: ${response.statusCode}");
+        print("resposta: ${response.body}");
+    }
+
+  _patch() async{
+
+    // PATCH atualizar elementos individuais do objeto
+
+    var corpo = json.encode(
+            {
+              "userId": 120,
+              "body": "Corpo dapostagem alterado"
+            }  
+        );
+
+        http.Response response = await http.patch(
+          _urlBase + "/posts/2",
+          headers: {"Content-type": "application/json; charset=UTF-8"},
+          body: corpo
+        );
+
+        print("resposta: ${response.statusCode}");
+        print("resposta: ${response.body}");
+  }
+
+  _delete() async {
+       http.Response response = await http.delete(
+          _urlBase + "/posts/2",
+          // headers: {"Content-type": "application/json; charset=UTF-8"},
+          // body: corpo
+       );
+
+       print("resposta: ${response.statusCode}");
+       print("resposta: ${response.body}");
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -75,13 +131,14 @@ class _RequisicoesState extends State<Requisicoes> {
                 ),
                 RaisedButton(
                   color: Colors.black,
-                  child: Text("Salvar", style: TextStyle(color: Colors.white),),
-                  onPressed:(){} ,
+                  child: Text("Atualizar", style: TextStyle(color: Colors.white),),
+                  // onPressed:_put,
+                  onPressed: _patch,
                 ),
                 RaisedButton(
                   color: Colors.black,
-                  child: Text("Salvar", style: TextStyle(color: Colors.white),),
-                  onPressed: (){},
+                  child: Text("Remover", style: TextStyle(color: Colors.white),),
+                  onPressed: _delete,
                 )
               ],
             ),
