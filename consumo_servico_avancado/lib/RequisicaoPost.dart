@@ -4,12 +4,12 @@ import 'dart:convert';
 import 'dart:async';
 import 'Post.dart';
 
-class RequisaoPost extends StatefulWidget {
+class RequisicaoPost extends StatefulWidget {
   @override
-  _RequisaoPostState createState() => _RequisaoPostState();
+  _RequisicaoPostState createState() => _RequisicaoPostState();
 }
 
-class _RequisaoPostState extends State<RequisaoPost> {
+class _RequisicaoPostState extends State<RequisicaoPost> {
 
   //https://jsonplaceholder.typicode.com/
 

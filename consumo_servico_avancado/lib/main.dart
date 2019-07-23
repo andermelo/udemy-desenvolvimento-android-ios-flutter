@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'RequisaoPost.dart';
+import 'RequisicaoPost.dart';
 
 void main(){
   runApp(
     MaterialApp(
-      home: RequisaoPost(),
+      home: RequisicaoPost(),
       debugShowCheckedModeBanner: false,
     )
   );
