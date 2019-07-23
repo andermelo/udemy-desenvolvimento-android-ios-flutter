@@ -85,7 +85,6 @@ class _RequisaoPostState extends State<RequisaoPost> {
                 )
               ],
             ),
-
             Expanded(
                 child: FutureBuilder<List<Post>>(
                 future: _recuperarPostagens(),
