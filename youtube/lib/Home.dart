@@ -55,7 +55,7 @@ class _HomeState extends State<Home> {
           )
         ],
       ),
-      body: Center(child: telas[_indiceAtual],),
+      body: telas[_indiceAtual],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _indiceAtual,
         onTap: (indice){

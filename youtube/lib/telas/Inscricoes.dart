@@ -11,7 +11,7 @@ class _InscricoesState extends State<Inscricoes> {
     return Container(
       child: Center(
         child: Text(
-          "Inscrição",
+          "Inscrições",
           style: TextStyle(
             fontSize: 25
           ),
