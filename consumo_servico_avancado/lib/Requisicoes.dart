@@ -35,17 +35,16 @@ class _RequisicoesState extends State<Requisicoes> {
 
   _post() async{
    
+  //  Post post = new Post(120,null,"","");
+
+   Post post = new Post(120, null, "Titulo", "Corpo da mensagem");
+
    var corpo = json.encode(
-      {
-        "userId": 2,
-        "id": null,
-        "title": "Título",
-        "body": "Corpo dapostagem"
-      }  
+      post.toJson()
    );
 
    http.Response response = await http.post(
-     _urlBase + "/posts/2",
+     _urlBase + "/posts/",
      headers: {"Content-type": "application/json; charset=UTF-8"},
      body: corpo
    );
@@ -59,13 +58,10 @@ class _RequisicoesState extends State<Requisicoes> {
 
     // PUT atualizar o objeto todo
 
+        Post post = new Post(120, null, "Titulo", "Corpo da mensagem");
+
         var corpo = json.encode(
-            {
-              "userId": 120,
-              "id": null,
-              "title": "Título alterado",
-              "body": "Corpo dapostagem alterado"
-            }  
+            post.toJson()
         );
 
         http.Response response = await http.put(
@@ -82,11 +78,10 @@ class _RequisicoesState extends State<Requisicoes> {
 
     // PATCH atualizar elementos individuais do objeto
 
-    var corpo = json.encode(
-            {
-              "userId": 120,
-              "body": "Corpo dapostagem alterado"
-            }  
+        Post post = new Post(120, null, "Titulo", "Corpo da mensagem");
+
+        var corpo = json.encode(
+            post.toJson()
         );
 
         http.Response response = await http.patch(
@@ -105,6 +100,12 @@ class _RequisicoesState extends State<Requisicoes> {
           // headers: {"Content-type": "application/json; charset=UTF-8"},
           // body: corpo
        );
+
+       if(response.statusCode == 200){
+         print("Deus certo a requisição");
+       }else{
+         print("nao deu certo!");
+       }
 
        print("resposta: ${response.statusCode}");
        print("resposta: ${response.body}");
