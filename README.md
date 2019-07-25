@@ -7,7 +7,7 @@
 ### Sumário 
 
 1. [Criando meu primeiro App](https://github.com/andermelo/udemy-desenvolvimento-android-ios-flutter/tree/master/primeiro_app)
-1. Aprenda Dart do zero
+<!-- 1. Aprenda Dart do zero -->
 1. Dart Intermediário e avançado
     1. [Funções](https://gist.github.com/andermelo/4e4b32f8b240d7bb5d829f141113392c#file-funcoes-dart)
     1. [Funções anônimas & parâmetros](https://gist.github.com/andermelo/4e4b32f8b240d7bb5d829f141113392c#file-funcoes-dart)
@@ -22,7 +22,7 @@
     1. [Mixins](https://gist.github.com/andermelo/)
     1. [Coleções - listas](https://gist.github.com/andermelo/)
     1. [Coleções - mapas](https://gist.github.com/andermelo/)
-1. Resumo da Linguagem Dart
+<!-- 1. Resumo da Linguagem Dart -->
 1. Componentes de interface
     1. Colunas e linhas
     1. [Formatação de textos](#formatação-de-textos)
