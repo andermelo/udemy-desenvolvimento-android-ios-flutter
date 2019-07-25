@@ -2,10 +2,10 @@ import 'package:http/http.dart' as http;
 import 'package:youtube/model/Video.dart';
 import 'dart:convert';
 
-//const CHAVE_YOUTUBE_API = "AIzaSyBf6w2hFvxkg3gwObXqsYiMTPJBbnbNozY";
-const CHAVE_YOUTUBE_API = "AIzaSyCw6s-VJLY1rxmmO0yRgen1D6pOZf8YCT0";
-//const ID_CANAL = "UCmEClzCBDx-vrt0GuSKBd9g"; //Jovem Nerd
-const ID_CANAL = "UCn9Erjy00mpnWeLnRqhsA1g"; // Ciência Todo Dia
+const CHAVE_YOUTUBE_API = "";
+// const CHAVE_YOUTUBE_API = "";
+const ID_CANAL = "UCmEClzCBDx-vrt0GuSKBd9g"; //Jovem Nerd
+// const ID_CANAL = "UCn9Erjy00mpnWeLnRqhsA1g"; // Ciência Todo Dia
 const URL_BASE = "https://www.googleapis.com/youtube/v3/";
 
 class Api {
