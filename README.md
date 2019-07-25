@@ -64,8 +64,8 @@
         - [Recuperando vídeos](youtube/lib/Api.dart#L35)
         - [Convertendo resultados](youtube/lib/model/Video.dart)
         - [Exibindo vídeos em uma lista (ListView)](youtube/lib/telas/Inicio.dart)
-        - [Utilizando componente de pesquisa (SearchDelegate)](#)
-        - [Recuperando textos para pesquisa & Sugestões](#)
+        - [Utilizando componente de pesquisa (SearchDelegate)](youtube/lib/CustomSearchDelegate.dart)
+        - [Recuperando textos para pesquisa & Sugestões](youtube/lib/CustomSearchDelegate.dart#L33)
         - [Executando vídeos](#)
     1. [Ciclo de vida Statefull Widget](#)
 
