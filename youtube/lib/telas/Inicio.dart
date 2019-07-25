@@ -22,7 +22,7 @@ class _InicioState extends State<Inicio> {
   Widget build(BuildContext context) {
     
     return FutureBuilder<List<Video>>(
-      future: _listarVideos(widget.pesquisa),
+      future: _listarVideos("widget.pesquisa"),
       builder: (context,snapshot){
         switch(snapshot.connectionState){
           case ConnectionState.none :
