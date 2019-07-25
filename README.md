@@ -66,8 +66,8 @@
         - [Exibindo vídeos em uma lista (ListView)](youtube/lib/telas/Inicio.dart)
         - [Utilizando componente de pesquisa (SearchDelegate)](youtube/lib/CustomSearchDelegate.dart)
         - [Recuperando textos para pesquisa & Sugestões](youtube/lib/CustomSearchDelegate.dart#L33)
-        - [Executando vídeos](#)
-    1. [Ciclo de vida Statefull Widget](#)
+        - [Executando vídeos](youtube/lib/telas/Inicio.dart#L46)
+    1. [Ciclo de vida Statefull Widget](youtube/lib/telas/Inicio.dart#L22-L44)
 
 1. Manipulação de dados
 1. Mídias
