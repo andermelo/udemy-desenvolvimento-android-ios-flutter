@@ -3,7 +3,8 @@ import 'package:youtube/model/Video.dart';
 import 'dart:convert';
 
 const CHAVE_YOUTUBE_API = "AIzaSyBf6w2hFvxkg3gwObXqsYiMTPJBbnbNozY";
-const ID_CANAL = "UCmEClzCBDx-vrt0GuSKBd9g";
+// const ID_CANAL = "UCmEClzCBDx-vrt0GuSKBd9g"; //Jovem Nerd
+const ID_CANAL = "UCn9Erjy00mpnWeLnRqhsA1g"; // Ciência Todo Dia
 const URL_BASE = "https://www.googleapis.com/youtube/v3/";
 
 class Api {
@@ -32,6 +33,7 @@ class Api {
       ).toList();
 
       return videos;
+
       // for( var video in videos){
       //   print("resultado: " + video.titulo);
       // }
