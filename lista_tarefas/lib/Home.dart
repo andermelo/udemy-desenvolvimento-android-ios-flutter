@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:undraw/undraw.dart';
 import 'package:path_provider/path_provider.dart';
 import 'dart:io';
 import 'dart:convert';
@@ -14,10 +13,14 @@ class _HomeState extends State<Home> {
 
   List _listaTarefas = [];
 
+ Future<File> _getFile()async {
+    final diretorio = await getApplicationDocumentsDirectory();
+    return File("${diretorio.path}/dados.json");
+  }
+
   _salvarArquivo() async{
     
-    final diretorio = await getApplicationDocumentsDirectory();
-    var arquivo = File("${diretorio.path}/dados.json");
+    var arquivo = await _getFile();
 
     //Criar dados
     Map<String, dynamic> tarefa = Map();
@@ -42,11 +45,37 @@ class _HomeState extends State<Home> {
     arquivo.writeAsString( dados );
     // caminho/dados.json
     // print("Caminho: " + diretorio.path);
+  }
+
+  _lerArquivo() async {
+    try{
+
+      final arquivo = await _getFile();
+      return arquivo.readAsString();
+
+    }catch(e){
+      return null;
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    _lerArquivo().then((dados){
+      setState(() {
+        _listaTarefas = json.decode(dados); 
+      });
+    });
 
   }
 
   @override
   Widget build(BuildContext context) {
+
+    // _salvarArquivo();
+    print("itens: " + _listaTarefas.toString());
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Lista de tarefas"),
@@ -60,7 +89,7 @@ class _HomeState extends State<Home> {
                 itemCount: _listaTarefas.length,
                 itemBuilder: (context, index){
                   return ListTile(
-                    title: Text(_listaTarefas[index]),
+                    title: Text(_listaTarefas[index]['titulo']),
                   );
                 },
               ),

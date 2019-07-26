@@ -71,10 +71,10 @@
 
 1. Manipulação de dados
     1. [Utilizando preferências](manipulacao_dados_preferenciais/)
-    1. [#App8 Lista de tarefas](#)
-        - [Floating Action button](#)
-        - [Lista de tarefas - Criando interface](#)
-        - [Lista de tarefas - Salvando dados utilizando arquivo](#)
+    1. [Floating Action button](floating_action_button/)
+    1. [#App8 Lista de tarefas](lista_tarefas/)
+        - [Lista de tarefas - Criando interface](lista_tarefas/lib/Home.dart)
+        - [Lista de tarefas - Salvando dados utilizando arquivo](lista_tarefas/lib/Home.dart#L17)
         - [Lista de tarefas - Recuperando dados](#)
         - [Lista de tarefas - Criando e alterando status de uma tarefa](#)
         - [Lista de tarefas - Utilizando Dismissible widget](#)
