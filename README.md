@@ -71,7 +71,8 @@
 
 1. Manipulação de dados
     1. [Utilizando preferências](manipulacao_dados_preferenciais/)
-    1. [#App8 Lista de tarefas - Floating Action button](#)
+    1. [#App8 Lista de tarefas](#)
+        - [Floating Action button](#)
         - [Lista de tarefas - Criando interface](#)
         - [Lista de tarefas - Salvando dados utilizando arquivo](#)
         - [Lista de tarefas - Recuperando dados](#)
