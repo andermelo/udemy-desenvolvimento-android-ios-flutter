@@ -12,21 +12,34 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
 
   List _listaTarefas = [];
+  TextEditingController _controllerTarefa = TextEditingController();
 
  Future<File> _getFile()async {
     final diretorio = await getApplicationDocumentsDirectory();
     return File("${diretorio.path}/dados.json");
   }
 
+  _salvarTarefa(){
+
+    String textoDigitado = _controllerTarefa.text;
+
+    Map<String, dynamic> tarefa = Map();
+    tarefa["titulo"] = textoDigitado;
+    tarefa["realizada"] = false;
+
+    setState(() {
+      _listaTarefas.add( tarefa );
+    });    
+    _salvarArquivo();
+
+    _controllerTarefa.text = "";
+  }
   _salvarArquivo() async{
     
     var arquivo = await _getFile();
 
     //Criar dados
-    Map<String, dynamic> tarefa = Map();
-    tarefa["titulo"] = "Ir ao mercado";
-    tarefa["realizada"] = false;
-    _listaTarefas.add(tarefa);
+    
 
     /* estrutura de uma tarefa
       [
@@ -88,9 +101,20 @@ class _HomeState extends State<Home> {
               child: ListView.builder(
                 itemCount: _listaTarefas.length,
                 itemBuilder: (context, index){
-                  return ListTile(
+                  return CheckboxListTile(
                     title: Text(_listaTarefas[index]['titulo']),
+                    value: _listaTarefas[index]['realizada'],
+                    selected: _listaTarefas[index]['realizada'],
+                    onChanged: (valor){
+                      setState(() {
+                       _listaTarefas[index]['realizada'] = valor;
+                      });
+                       _salvarArquivo(); 
+                    },
                   );
+                  // return ListTile(
+                  //   title: Text(_listaTarefas[index]['titulo']),
+                  // );
                 },
               ),
             ),
@@ -108,6 +132,7 @@ class _HomeState extends State<Home> {
               return AlertDialog(
                 title: Text("Adiconar tarefa"),
                 content: TextField(
+                  controller: _controllerTarefa,
                   decoration: InputDecoration(
                     labelText: "Digite sua tarefa",
                   ),
@@ -124,6 +149,7 @@ class _HomeState extends State<Home> {
                     child: Text("Confirmar"),
                     onPressed: (){
                       // salvar
+                      _salvarTarefa();
                       Navigator.pop(context);  
                     },
                   )
