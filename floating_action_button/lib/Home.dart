@@ -20,7 +20,7 @@ class _HomeState extends State<Home> {
         icon: Icon(Icons.add_shopping_cart),
         label: Text("Adiconar"),
         shape: BeveledRectangleBorder(
-          borderRadius: BorderRadius.circular(2)
+          borderRadius: BorderRadius.circular(2),
         ),
         // shape: _DiamondBorder(),
         backgroundColor: Colors.red,
@@ -28,9 +28,9 @@ class _HomeState extends State<Home> {
         // elevation: 5, //configurar sombra
         // mini: true, //diminuir o tamanho padrao
         // child: Icon(Icons.add),
-        // onPressed: (){
-        //   print("Resultado: botao pressionado");
-        // },
+        onPressed: (){
+          print("Resultado: botao pressionado");
+        },
       ),
 
       bottomNavigationBar: BottomAppBar(
