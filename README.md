@@ -7,6 +7,7 @@
 ### Sumário 
 
 1. [Criando meu primeiro App](https://github.com/andermelo/udemy-desenvolvimento-android-ios-flutter/tree/master/primeiro_app)
+
 <!-- 1. Aprenda Dart do zero -->
 1. Dart Intermediário e avançado
     1. [Funções](https://gist.github.com/andermelo/4e4b32f8b240d7bb5d829f141113392c#file-funcoes-dart)
@@ -23,6 +24,7 @@
     1. [Coleções - listas](https://gist.github.com/andermelo/)
     1. [Coleções - mapas](https://gist.github.com/andermelo/)
 <!-- 1. Resumo da Linguagem Dart -->
+
 1. Componentes de interface
     1. Colunas e linhas
     1. [Formatação de textos](#formatação-de-textos)
@@ -34,6 +36,7 @@
     1. [Widgets - Stateless & Stateful](#widgets---stateless--stateful)
     1. [App 1 Frases do Dia](frases_do_dia/)
     1. [App 2 JokenPo](/jokenpo)
+
 1. Componentes de entrada de dados
     1. [Utilizando caixas de texto](entrada_dados/lib/CampoTexto.dart)
     1. [App 3 Etanol ou Gasolina](alcool_ou_gasolina/)
@@ -41,12 +44,14 @@
     1. [Utilizando RadioButton](entrada_dados/lib/EntradaRadioButton.dart)
     1. [Utilizando Switch](entrada_dados/lib/EntradaSwitch.dart)
     1. [Utilizando Slider](entrada_dados/lib/EntradaSlider.dart)
+
 1. Navegação
     1. [Navegando entre telas](navegacao/)
     1. [App 4 ATM Consultoria](atm_consultoria/)
     1. [Passando dados entre telas](dados_entre_telas/)
     1. [App 5 Cara ou Coroa](cara_coroa/)
     1. [Nomeando rotas](/navegacao/lib/main.dart#L7)
+
 1. Consumo de serviço web
     1. [Criando requisições](consumo_servicos/lib/Home.dart#L28)    
     1. [Exibindo retorno da requisição na interface](consumo_servicos/lib/Home.dart)
@@ -95,8 +100,59 @@
         - [Removendo anotação](#)
 
 1. Mídias
-1. Firebase
-1. WhatsApp
+    1. [Executando sons](#)
+    1. [Pausando e parando](#)
+    1. [Controlando volume](#)
+    1. [Utilizando abas & TabBar](#)
+    1. [#App10 Aprenda Inglês ](#)
+        - [Configurando temas & abas](#)
+        - [Criando interface com GridView & MediaQuery](#)
+        - [Executando sons](#)
+    1. [Executando vídeos](#)
+
+1. Firebase 
+    1. [Configurando projeto no Android](#)
+    1. [Configurando projeto no iOS - opcional](#)
+    1. [Estrutura de dados](#)
+    1. [Salvando & atualizando](#)
+    1. [Removendo & recuperando](#)
+    1. [Aplicando filtros básicos](#)
+    1. [Pesquisa de texto](#)
+    1. [Atualizando Google Play Service](#)
+    1. [Cadastro e verificação de usuário logado](#)
+    1. [Logar e deslogar usuário](#)
+    1. [Selecionando imagens - câmera & galeria de fotos](#)
+    1. [Upload de imagens com Storage](#)
+    1. [Status do Upload & Baixando imagens](#)
+
+1. WhatsApp [App 11](#)
+    1. [Configurando o projeto](#)
+    1. [Criando interface de login](#)
+    1. [Criando interface de cadastro](#)
+    1. [Validando cadastro de usuário](#)
+    1. [Cadastro de usuário](#)
+    1. [Login de usuário](#)
+    1. [Salvando dados do usuário](#)
+    1. [Criando interface com abas](#)
+    1. [Listando conversas](#)
+    1. [Menu de opções - PopupMenuButton](#)
+    1. [Recursos de rotas - avançado](#)
+    1. [Criando tela de configurações](#)
+    1. [Fazendo upload da imagem do perfil](#)
+    1. [Atualizando dados do perfil](#)
+    1. [Listando contatos](#)
+    1. [Abrindo tela de mensagem](#)
+    1. [Criando interface de mensagem - parte 1](#)
+    1. [Criando interface de mensagem - parte 2](#)
+    1. [Salvando mensagem & ajuste na interface](#)
+    1. [Recuperando mensagens](#)
+    1. [Trocando mensagens](#)
+    1. [Enviando imagem na mensagem](#)
+    1. [Salvando conversa](#)
+    1. [Listando conversas](#)
+    1. [Ajustes & Definindo tema Android e IOS](#)
+    1. [Rolando mensagens automaticamente](#)
+
 1. [Recursos utilizados](#recursos-utilizados)
 1. [Referência bibliográfica](#referência-bibliográfica)
 
