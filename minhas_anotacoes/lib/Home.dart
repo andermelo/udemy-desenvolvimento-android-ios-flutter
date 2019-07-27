@@ -17,13 +17,26 @@ class _HomeState extends State<Home> {
   List<Anotacao> _anotacoes = List<Anotacao>();
   
 
-  _exibirTelaCadastro(){
+  _exibirTelaCadastro( {Anotacao anotacao} ){
+
+    String textoSalvarAtualizar = "";
+    if(anotacao == null ){ //salvando
+
+      _tituloController.text = "";
+      _descricaoController.text = "";
+      textoSalvarAtualizar = "Salvar";
+
+    }else { //atualizar
+      _tituloController.text = anotacao.titulo;
+      _descricaoController.text = anotacao.descricao;
+      textoSalvarAtualizar = "Atualizar";
+    }
 
     showDialog(
       context: context,
       builder: (context){
         return AlertDialog(
-          title: Text("adicionar anotação"),
+          title: Text("$textoSalvarAtualizar anotação"),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
@@ -52,11 +65,11 @@ class _HomeState extends State<Home> {
             FlatButton(
               onPressed: (){
 
-                _salvarAnotacao();
+                _salvarAtualizarAnotacao(anotacaoSelecionada: anotacao);
 
                 Navigator.pop(context);
               },
-              child: Text("Salvar"),
+              child: Text(textoSalvarAtualizar),
             )
           ],
         );  
@@ -64,17 +77,26 @@ class _HomeState extends State<Home> {
     );
   }
 
-  _salvarAnotacao() async {
+  _salvarAtualizarAnotacao({Anotacao anotacaoSelecionada}) async {
 
     String titulo = _tituloController.text;
     String descricao = _descricaoController.text;
 
-    // print("data atual: " + DateTime.now().toString());
+    if(anotacaoSelecionada == null){ //salvar
 
-    Anotacao anotacao = Anotacao(titulo, descricao,  DateTime.now().toString());
-    int resultado = await _db.salvarAnotacao(anotacao);
+      Anotacao anotacao = Anotacao(titulo, descricao,  DateTime.now().toString());
+      int resultado = await _db.salvarAnotacao(anotacao);
 
-    print("salvar anotacao: " + resultado.toString() );
+    }else{//atuazaliar
+
+      anotacaoSelecionada.titulo = titulo;
+      anotacaoSelecionada.descricao = descricao;
+      anotacaoSelecionada.data = DateTime.now().toString();
+      int resultado = await _db.atualizarAnotacao(anotacaoSelecionada);
+
+    }
+
+    
 
     _tituloController.clear();
     _descricaoController.clear();
@@ -116,6 +138,14 @@ class _HomeState extends State<Home> {
     return dataFormata;
   }
 
+  _removerAnotacao(int id) async {
+
+    await _db.removerAnotacao(id);
+
+    _recuperarAnotacoes();
+    
+  }
+
   @override
   void initState() {
     super.initState();
@@ -144,6 +174,35 @@ class _HomeState extends State<Home> {
                   child: ListTile(
                     title: Text(anotacao.titulo),
                     subtitle: Text("${_formatarData(anotacao.data)} - ${anotacao.descricao}"),
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        GestureDetector(
+                          onTap: (){
+                            _exibirTelaCadastro(anotacao: anotacao);
+                          },
+                          child: Padding(
+                            padding: EdgeInsets.only(right: 16),
+                            child: Icon(
+                              Icons.edit,
+                              color: Colors.green
+                            ),
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: (){
+                            _removerAnotacao(anotacao.id);
+                          },
+                          child: Padding(
+                            padding: EdgeInsets.only(right: 0),
+                            child: Icon(
+                              Icons.remove_circle,
+                              color: Colors.red
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 );
 
