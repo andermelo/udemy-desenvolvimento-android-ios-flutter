@@ -11,8 +11,9 @@ class _HomeState extends State<Home> {
 
   TextEditingController _tituloController = TextEditingController();
   TextEditingController _descricaoController = TextEditingController();
-
   var _db = AnotacaoHelper();
+  List<Anotacao> _anotacoes = List<Anotacao>();
+  
 
   _exibirTelaCadastro(){
 
@@ -73,16 +74,71 @@ class _HomeState extends State<Home> {
 
     print("salvar anotacao: " + resultado.toString() );
 
+    _tituloController.clear();
+    _descricaoController.clear();
 
+    _recuperarAnotacoes();
+
+
+  }
+
+  _recuperarAnotacoes() async {
+
+    List anotacoesRecuperadas =  await _db.recuperarAnotacoes();
+    
+    List<Anotacao> listaTemporaria = List<Anotacao>();
+    for(var item in anotacoesRecuperadas){
+
+      Anotacao anotacao = Anotacao.fromMap(item);
+      listaTemporaria.add( anotacao );
+
+    }
+
+    setState(() {
+      _anotacoes = listaTemporaria; 
+    });
+    listaTemporaria = null;
+
+    // print("Lista anotacoes: " + anotacoesRecuperada.toString());
+
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _recuperarAnotacoes();
   }
   @override
   Widget build(BuildContext context) {
+    
+    // _recuperarAnotacoes();
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Minhas anotaçoes"),
         backgroundColor: Colors.lightGreen,
       ),
-      body: Container(),
+      body: Column(
+        children: <Widget>[
+          Expanded(
+            child: ListView.builder(
+              itemCount: _anotacoes.length,
+              itemBuilder: (context, index){
+
+                final anotacao = _anotacoes[index];
+
+                return Card(
+                  child: ListTile(
+                    title: Text(anotacao.titulo),
+                    subtitle: Text("${anotacao.data} - ${anotacao.descricao}"),
+                  ),
+                );
+
+              },
+            ),
+          )
+        ],
+      ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.green,
         foregroundColor: Colors.white,
