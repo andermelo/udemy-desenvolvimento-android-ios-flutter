@@ -21,8 +21,11 @@ class _HomeState extends State<Home> {
 
   AudioCache audioCache = AudioCache(prefix: "audios/");
   bool primeiraExecucao = true;
+  double volume = 0.5;
 
   _executar() async{
+
+    audioPlayer.setVolume(volume);
 
     if(primeiraExecucao){
       audioPlayer = await audioCache.play("musica.mp3");
@@ -75,11 +78,22 @@ class _HomeState extends State<Home> {
       ),
       body: Column(
         children: <Widget>[
+          //Slider
+          Slider(
+            value: volume,
+            min: 0,
+            max: 1,
+            divisions: 10,
+            onChanged: (novoVolume){
+              setState(() {
+               volume = novoVolume; 
+              });
+              audioPlayer.setVolume(novoVolume);
+            },
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              //Slider
-
+            children: <Widget>[              
               //1
               Padding(
                 padding: EdgeInsets.all(8),
