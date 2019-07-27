@@ -28,7 +28,7 @@ class _HomeState extends State<Home> {
     audioPlayer.setVolume(volume);
 
     if(primeiraExecucao){
-      audioPlayer = await audioCache.play("musica.mp3");
+      audioPlayer = await audioCache.play("bach.mp3");
       primeiraExecucao = false;
     }else{
       audioPlayer.resume();
