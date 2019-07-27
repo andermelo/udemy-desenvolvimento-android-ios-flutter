@@ -88,11 +88,11 @@
     1. [#App9 Notas diárias](minhas_anotacoes/)
         - [Criando interface](minhas_anotacoes/lib/Home.dart)
         - [Inicializando banco de dados](minhas_anotacoes/lib/Helper/AnotacaoHelper.dart)
-        - [Salvando anotação](minhas_anotacoes/lib/Home.dart#L64-L77)
-        - [Listando anotações](#)
-        - [Formatando datas](#)
-        - [Atualizando anotação](#)
-        - [Removendo anotação](#)
+        - [Salvando anotação](minhas_anotacoes/lib/Home.dart#L80-L106)
+        - [Listando anotações](minhas_anotacoes/lib/Home.dart#L108-L127)
+        - [Formatando datas](minhas_anotacoes/lib/Home.dart#L129-L139)
+        - [Atualizando anotação](minhas_anotacoes/lib/Home.dart#L80-L106)
+        - [Removendo anotação](minhas_anotacoes/lib/Home.dart#L141-L147)
 
 1. Mídias
 1. Firebase
