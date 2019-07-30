@@ -1,6 +1,6 @@
 # Aprenda Inglês
 
-<img src="../assets/images/aprenda_ingles.png" with="400" />
+<img src="../assets/images/aprenda_ingles.png" width="200" />
 
 ## Recursos utilizados
   * [aspectRatio](#)
