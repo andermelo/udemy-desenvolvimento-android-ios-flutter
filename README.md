@@ -100,15 +100,15 @@
         - [Removendo anotação](minhas_anotacoes/lib/Home.dart#L141-L147)
 
 1. Mídias
-    1. [Executando sons](#)
-    1. [Pausando e parando](#)
-    1. [Controlando volume](#)
-    1. [Utilizando abas & TabBar](#)
-    1. [#App10 Aprenda Inglês ](#)
-        - [Configurando temas & abas](#)
-        - [Criando interface com GridView & MediaQuery](#)
-        - [Executando sons](#)
-    1. [Executando vídeos](#)
+    1. [Executando sons](executando_sons/)
+    1. [Pausando e parando](executando_sons/lib/main.dart#L26-L70)
+    1. [Controlando volume](executando_sons/lib/main.dart#L80-L93)
+    1. [Utilizando abas & TabBar](tabbar/)
+    1. [#App10 Aprenda Inglês ](aprenda_ingles)
+        - [Configurando temas & abas](aprenda_ingles/lib/telas/Home.dart)
+        - [Criando interface com GridView & MediaQuery](aprenda_ingles/lib/telas/Bichos.dart#L31-L72)
+        - [Executando sons](aprenda_ingles/lib/telas/Bichos.dart#L11-L23)
+    1. [Executando vídeos](executando_videos/)
 
 1. Firebase 
     1. [Configurando projeto no Android](#)
