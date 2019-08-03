@@ -61,14 +61,30 @@ void main() async{
   // }
 
   // recuperando dados recebendo atualizações com .listen (ouvinte)
-  db.collection("usuarios").snapshots().listen(
-    ( snapshot ){
-      for( DocumentSnapshot item in snapshot.documents){
-        var dados = item.data;
-        print("dados usuarios: " + dados["nome"] + " - " + dados["idade"].toString() );
-      }
-    }
-  );
+  // db.collection("usuarios").snapshots().listen(
+  //   ( snapshot ){
+  //     for( DocumentSnapshot item in snapshot.documents){
+  //       var dados = item.data;
+  //       print("dados usuarios: " + dados["nome"] + " - " + dados["idade"].toString() );
+  //     }
+  //   }
+  // );
+
+  // filtros
+  QuerySnapshot querySnapshot =  await db.collection("usuarios")
+  // .where("nome", isEqualTo: "pedro melo")
+  // .where("idade", isEqualTo: 45)
+  .where("idade", isLessThan: 46)
+  .orderBy("idade", descending: true)
+  .orderBy("nome", descending: false)
+  .limit(2)
+  .getDocuments();
+
+  for (DocumentSnapshot item in querySnapshot.documents) {
+    var dados = item.data;
+    print("filtro nome: ${dados["nome"]} idade: ${dados["idade"]}");    
+  }
+  
 
   runApp(App());
 }
