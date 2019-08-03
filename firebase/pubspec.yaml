@@ -27,6 +27,7 @@ dependencies:
   cloud_firestore: ^0.12.9 # banco de dados do firebase
   firebase_storage: ^3.0.4 # armazenamento de arquivos
   firebase_auth: ^0.14.0 # autenticacao
+  image_picker: ^0.6.1
 
 dev_dependencies:
   flutter_test:

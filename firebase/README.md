@@ -39,6 +39,12 @@ android {
 }
 ```
 
+## Selecionando imagens - câmera & galeria de fotos
+
+### Recursos
+
+ * [image_picker](https://pub.dev/packages/image_picker) 
+
 ## Recursos utilizados
  * [firebase_core](https://pub.dev/packages/firebase_core)
  * [cloud_firestore](https://pub.dev/packages/cloud_firestore)
