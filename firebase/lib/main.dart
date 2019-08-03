@@ -148,6 +148,8 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
 
   File _image;
+  String _statusUpload = "Upload nao iniciado";
+  String _urlImagemRecuperada = null;
 
   Future _recuperarImagem(bool daCamera) async {
     File imagemSelecionada;
@@ -173,7 +175,39 @@ class _HomeState extends State<Home> {
       .child("foto1.jpg");
 
     // Fazer upload da imagem
-    arquivo.putFile(_image);
+    StorageUploadTask task = arquivo.putFile(_image);
+
+    //Controlar progresso do upload
+    task.events.listen((StorageTaskEvent storageEvent){
+
+      if (storageEvent.type == StorageTaskEventType.progress){
+        setState(() {
+         _statusUpload = "Upload em andamento!"; 
+        });
+      } else if( storageEvent.type == StorageTaskEventType.success) {
+        setState(() {
+         _statusUpload = "upload feito com sucesso"; 
+        });
+      }
+
+    });
+
+    task.onComplete.then((StorageTaskSnapshot snapshot){
+
+      _recuperarUrlImagem( snapshot );
+
+    });
+  }
+
+  Future _recuperarUrlImagem(StorageTaskSnapshot snapshot) async {
+
+      String url = await snapshot.ref.getDownloadURL();
+      print("URL: " + url);
+
+      setState(() {
+       _urlImagemRecuperada = url; 
+      });
+
   }
 
   @override
@@ -185,6 +219,7 @@ class _HomeState extends State<Home> {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
+            Text(_statusUpload),
             RaisedButton(
               child: Text("Camera"),
               onPressed: (){
@@ -199,12 +234,16 @@ class _HomeState extends State<Home> {
             ),
             _image == null ? Container() : Image.file( _image ),
 
+            _image == null ? Container() :
             RaisedButton(
               child: Text("Upload imagem - Storage"),
               onPressed: (){
                 _uploadImagem();
               },
-            )
+            ),
+            _urlImagemRecuperada == null 
+            ? Container()
+            : Image.network( _urlImagemRecuperada ) 
           ],
         ),
       ),
