@@ -111,8 +111,8 @@
     1. [Executando vídeos](executando_videos/)
 
 1. Firebase 
-    1. [Configurando projeto no Android](#)
-    1. [Configurando projeto no iOS - opcional](#)
+    1. [Configurando projeto no Android](firebase/)
+    1. [Configurando projeto no iOS](firebase/)
     1. [Estrutura de dados](#)
     1. [Salvando & atualizando](#)
     1. [Removendo & recuperando](#)
