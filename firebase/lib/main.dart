@@ -96,7 +96,9 @@ void main() async{
   
   // Cadastro e verificação de usuário logado
   FirebaseAuth auth = await FirebaseAuth.instance;  
-  // Crian um usuario com email e senha
+
+
+  // Criando um usuario com email e senha
   // String email = "anderson.90@gmail.com";
   // String senha = "123456";
 
@@ -108,6 +110,17 @@ void main() async{
   // }).catchError((erro){
   //     print("novo usuario: erro " + erro.toString());
   // });
+
+  // auth.signOut(); //deslogar
+
+  // auth.signInWithEmailAndPassword(
+  //   email: "anderson.90@gmail.com",
+  //   password: "123456")
+  //   .then((firebaseUser){
+  //     print("usuário logado com sucesso! email: " + firebaseUser.user.email );
+  //   }).catchError((erro){
+  //     print("erro no login - " + erro.toString());
+  //   });
 
   FirebaseUser usuarioAtual = await auth.currentUser();
   if (usuarioAtual != null) { //logado
