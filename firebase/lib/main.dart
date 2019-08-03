@@ -15,7 +15,7 @@ void main() async{
   //   );
 
   // DocumentReference ref = await db.collection("noticias")
-  // .add(
+  // .add( // utilzando o add é gerado um identificador automatico
   //   {
   //     "titulo" : "Frio extremo nesse final de semana :s",
   //     "descricao" : "texto de exemplo..."
