@@ -6,7 +6,7 @@ void main(){
   Firestore.instance
     .collection("usuários")
     .document("pontuacao")
-    .setData({"Carlos": "80", "Silvana": "200"});
+    .setData({"Anderson": "90", "Pedro": "350"});
 
   runApp(App());
 }
