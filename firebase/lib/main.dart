@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 void main() async{
 
@@ -93,6 +94,28 @@ void main() async{
     print("filtro nome: ${dados["nome"]} idade: ${dados["idade"]}");    
   }
   
+  // Cadastro e verificação de usuário logado
+  FirebaseAuth auth = await FirebaseAuth.instance;  
+  // Crian um usuario com email e senha
+  // String email = "anderson.90@gmail.com";
+  // String senha = "123456";
+
+  // auth.createUserWithEmailAndPassword(
+  //   email: email, 
+  //   password: senha)
+  // .then((firebaseUser){
+  //     print("deu certo - " + firebaseUser.user.email );
+  // }).catchError((erro){
+  //     print("novo usuario: erro " + erro.toString());
+  // });
+
+  FirebaseUser usuarioAtual = await auth.currentUser();
+  if (usuarioAtual != null) { //logado
+    print("usuario atual logado email: " + usuarioAtual.email );
+  }else{//deslogado
+    print("Usuário atual está DESLOGADO!");
+  }
+
 
   runApp(App());
 }

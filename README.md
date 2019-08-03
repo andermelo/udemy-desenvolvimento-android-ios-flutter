@@ -118,7 +118,6 @@
     1. [Removendo & recuperando](firebase/lib/main.dart#L36-L71)
     1. [Aplicando filtros básicos](firebase/lib/main.dart#L76-L83)
     1. [Pesquisa de texto](firebase/lib/main.dart#L76-L94)
-    1. [Atualizando Google Play Service](#)
     1. [Cadastro e verificação de usuário logado](#)
     1. [Logar e deslogar usuário](#)
     1. [Selecionando imagens - câmera & galeria de fotos](#)
