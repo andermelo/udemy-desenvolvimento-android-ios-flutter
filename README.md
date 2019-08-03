@@ -113,7 +113,7 @@
 1. Firebase 
     1. [Configurando projeto no Android](firebase/)
     1. [Configurando projeto no iOS](firebase/)
-    1. [Estrutura de dados](#)
+    1. [Estrutura de dados](https://firebase.google.com/docs/firestore/data-model)
     1. [Salvando & atualizando](#)
     1. [Removendo & recuperando](#)
     1. [Aplicando filtros básicos](#)

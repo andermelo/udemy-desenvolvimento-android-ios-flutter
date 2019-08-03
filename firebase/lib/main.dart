@@ -1,12 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-void main(){
+void main() async{
 
-  Firestore.instance
-    .collection("usuários")
-    .document("pontuacao")
-    .setData({"Anderson": "90", "Pedro": "350"});
+  Firestore db = Firestore.instance;
+
+  // db.collection("usuarios")
+  //   .document("001")
+  //   .setData(
+  //       {
+  //         "nome" : "Anderson Melo",
+  //         "idade" : "29"
+  //       }
+  //   );
+
+  // DocumentReference ref = await db.collection("noticias")
+  // .add(
+  //   {
+  //     "titulo" : "Frio extremo nesse final de semana :s",
+  //     "descricao" : "texto de exemplo..."
+  //   }
+  // );
+
+  // print("item salvo: " + ref.documentID);
+
+  db.collection("noticias")
+  .document("u8RDZLSiVB0ttsftA0P6")
+  .setData(
+    {
+      "titulo" : "Frio extremo nesse final de semana :s -editado às 13:42",
+      "descricao" : "Ta frioooooo!"
+    }
+  );
 
   runApp(App());
 }
