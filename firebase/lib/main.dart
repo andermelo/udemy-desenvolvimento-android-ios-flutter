@@ -70,15 +70,23 @@ void main() async{
   //   }
   // );
 
+  var pesquisa = "pe";
+
   // filtros
   QuerySnapshot querySnapshot =  await db.collection("usuarios")
-  // .where("nome", isEqualTo: "pedro melo")
-  // .where("idade", isEqualTo: 45)
-  .where("idade", isLessThan: 46)
-  .orderBy("idade", descending: true)
-  .orderBy("nome", descending: false)
-  .limit(2)
+  // // .where("nome", isEqualTo: "pedro melo")
+  // // .where("idade", isEqualTo: 45)
+  // .where("idade", isLessThan: 46)
+  // .orderBy("idade", descending: true)
+  // .orderBy("nome", descending: false)
+  // .limit(2)
+  // .getDocuments();
+  
+  // buscar texto
+  .where("nome", isGreaterThanOrEqualTo: pesquisa)
+  .where("nome", isLessThanOrEqualTo: pesquisa + "\uf8ff")
   .getDocuments();
+
 
   for (DocumentSnapshot item in querySnapshot.documents) {
     var dados = item.data;
