@@ -24,12 +24,49 @@ void main() async{
 
   // print("item salvo: " + ref.documentID);
 
-  db.collection("noticias")
-  .document("u8RDZLSiVB0ttsftA0P6")
-  .setData(
-    {
-      "titulo" : "Frio extremo nesse final de semana :s -editado às 13:42",
-      "descricao" : "Ta frioooooo!"
+  // db.collection("noticias")
+  // .document("u8RDZLSiVB0ttsftA0P6")
+  // .setData(
+  //   {
+  //     "titulo" : "Frio extremo nesse final de semana :s -editado às 13:42",
+  //     "descricao" : "Ta frioooooo!"
+  //   }
+  // );
+
+  // excluir
+  // db.collection("usuarios").document("003").delete();
+
+  // recuperar item
+  // DocumentSnapshot snapshot = await db.collection("usuarios")
+  //   .document("002")
+  //   .get();
+
+  // print("dados: " + snapshot.data.toString());
+
+  // var dados = snapshot.data;
+
+  // print("nome: " + dados["nome"] + " idade: " + dados["idade"]);
+
+
+  // recuperar todos documentos para uma coleção
+  // QuerySnapshot querySnapshot = await db
+  // .collection("usuarios")
+  // .getDocuments();
+
+  // print("dados usuarios: " + querySnapshot.documents.toString() );
+
+  // for( DocumentSnapshot item in querySnapshot.documents){
+  //   var dados = item.data;
+  //   print("dados usuarios: " + dados["nome"] + " - " + dados["idade"].toString() );
+  // }
+
+  // recuperando dados recebendo atualizações com .listen (ouvinte)
+  db.collection("usuarios").snapshots().listen(
+    ( snapshot ){
+      for( DocumentSnapshot item in snapshot.documents){
+        var dados = item.data;
+        print("dados usuarios: " + dados["nome"] + " - " + dados["idade"].toString() );
+      }
     }
   );
 
