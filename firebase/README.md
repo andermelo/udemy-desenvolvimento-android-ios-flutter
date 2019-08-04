@@ -52,6 +52,5 @@ android {
  * [firebase_auth](https://pub.dev/packages/firebase_auth)
  * [Correção no erro AndroidX](https://developer.android.com/jetpack/androidx/migrate)
 
- # Referências
 
 
