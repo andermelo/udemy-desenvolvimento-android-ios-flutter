@@ -11,6 +11,10 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> with SingleTickerProviderStateMixin{
 
   TabController _tabController;
+  List<String> itensMenu = [
+    "Configurações",
+    "Sair"
+  ];
   String _emailUsuario = '';
 
   Future _recuperarDadosUsuario() async{
@@ -32,6 +36,26 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin{
     );
   }
 
+  _escolhaMenuItem(String itemEscolhido){
+
+    switch (itemEscolhido) {
+      case "Configurações":
+        print("Configurações");        
+        break;
+      case "Sair":
+        _deslogarUsuario();
+        break;
+    }
+    //print("Item escolhido: " + itemEscolhido);
+
+  }
+
+  _deslogarUsuario(){
+    FirebaseAuth auth = FirebaseAuth.instance;
+    auth.signOut();
+    // Navigator.pushReplacement(context, newRoute)
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,6 +74,19 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin{
             Tab(text: "Contatos",)
           ],
         ),
+        actions: <Widget>[
+          PopupMenuButton<String>(
+            onSelected: _escolhaMenuItem,
+            itemBuilder: (context){
+              return itensMenu.map((String item){
+                return PopupMenuItem<String>(
+                  value: item,
+                  child: Text(item),
+                );
+              }).toList();
+            },
+          )
+        ],
       ),      
       body: TabBarView(
         controller: _tabController,
