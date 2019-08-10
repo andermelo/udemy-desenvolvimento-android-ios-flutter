@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:whatsapp/model/Usuario.dart';
+import 'Home.dart';
 
 class Cadastro extends StatefulWidget {
   @override
@@ -8,9 +11,10 @@ class Cadastro extends StatefulWidget {
 class _CadastroState extends State<Cadastro> {
 
   //Controladores
-  TextEditingController _controllerNome = TextEditingController();
-  TextEditingController _controllerEmail = TextEditingController();
-  TextEditingController _controllerSenha = TextEditingController();
+  TextEditingController _controllerNome = TextEditingController(text: "Anderson Melo");
+  TextEditingController _controllerEmail = TextEditingController(text: "andersonmelo@gmail.com");
+  TextEditingController _controllerSenha = TextEditingController(text: "123456");
+
   String _mensagemErro = '';
 
   _validarCampos(){
@@ -21,14 +25,21 @@ class _CadastroState extends State<Cadastro> {
 
     if (nome.length >= 3) {
       if (email.isNotEmpty && email.contains("@")) {
-        if (senha.isNotEmpty) {
+        if (senha.isNotEmpty && senha.length >= 6) {
           setState(() {
            _mensagemErro = ''; 
           });
-          _cadastrarErro();
+
+          Usuario usuario = Usuario();
+          usuario.nome = nome;
+          usuario.email = email;
+          usuario.senha = senha;
+
+          _cadastrarUsuario(usuario);
+        
         } else {
           setState(() {
-            _mensagemErro = "Preencha uma senha válida"; 
+            _mensagemErro = "Preencha uma senha válida apartir de 6 caracteres"; 
           });
         }
       } else {
@@ -43,8 +54,28 @@ class _CadastroState extends State<Cadastro> {
     }
   }
 
-  _cadastrarErro(){
+  _cadastrarUsuario(Usuario usuario){
 
+    FirebaseAuth auth = FirebaseAuth.instance;
+
+    auth.createUserWithEmailAndPassword(
+      email: usuario.email,
+      password: usuario.senha,
+    ).then((firebaseUser){
+
+      Navigator.push(
+        context, 
+        MaterialPageRoute(
+          builder: (context) => Home()
+        )
+      );
+    }).catchError((erro){
+      print("Erro: " + erro.toString() );
+
+      setState((){
+        _mensagemErro = "Sucesso ao cadastrar usuario"; 
+      });
+    });
   }
 
   @override
@@ -135,6 +166,7 @@ class _CadastroState extends State<Cadastro> {
                   Center(
                     child: Text(
                       _mensagemErro,
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                           fontSize: 15,
                           color: Colors.yellow,
