@@ -24,6 +24,18 @@ class Usuario {
     _senha = senha;
   }
 
+  Usuario();
+
+  Map<String, dynamic> toMap(){
+    Map<String, dynamic> map = {
+      'nome' : this._nome,
+      'email' : this._email
+    };
+
+    return map;
+  
+  }
+
 
 
 }
