@@ -128,7 +128,7 @@
     1. [Configurando o projeto](whatsapp/)
     1. [Criando interface de login](whatsapp/lib/Login.dart)
     1. [Criando interface de cadastro](whatsapp/lib/Cadastro.dart)
-    1. [Validando cadastro de usuário](#)
+    1. [Validando cadastro de usuário](whatsapp/lib/Cadastro.dart#L16-L44)
     1. [Cadastro de usuário](#)
     1. [Login de usuário](#)
     1. [Salvando dados do usuário](#)
