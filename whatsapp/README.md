@@ -11,4 +11,8 @@ WhatsApp clone
   * Correção de erros
     * [Como migrar para o AndroidX](https://developer.android.com/jetpack/androidx/migrate)
     * [Configure aplicativos com mais de 64 K métodos](https://developer.android.com/studio/build/multidex)
+    * [problemas com AndroidX](https://stackoverflow.com/questions/54823084/flutter-error-android-dependency-androidx-corecore-has-different-version-us)
+  * [image_picker](https://pub.dev/packages/image_picker)
+  
+
     
