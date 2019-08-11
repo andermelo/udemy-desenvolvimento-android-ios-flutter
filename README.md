@@ -136,7 +136,7 @@
     1. [Listando conversas](whatsapp/lib/telas/AbaConversas.dart)
     1. [Menu de opções - PopupMenuButton](whatsapp/lib/Home.dart#L40-L52)
     1. [Recursos de rotas - avançado](whatsapp/lib/RouteGenerator.dart)
-    1. [Criando tela de configurações](#)
+    1. [Criando tela de configurações](whatsapp/lib/Configuracoes.dart)
     1. [Fazendo upload da imagem do perfil](#)
     1. [Atualizando dados do perfil](#)
     1. [Listando contatos](#)
