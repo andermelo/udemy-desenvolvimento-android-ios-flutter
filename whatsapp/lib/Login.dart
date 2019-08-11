@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp/RouteGenerator.dart';
 import 'Cadastro.dart';
 import 'package:whatsapp/model/Usuario.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -53,14 +54,7 @@ class _LoginState extends State<Login> {
       email: usuario.email,
       password: usuario.senha
     ).then((firebaseUser){
-
-      Navigator.pushReplacement(
-        context, 
-        MaterialPageRoute(
-          builder: (context) => Home()
-        )
-      );
-
+      Navigator.pushReplacementNamed(context, RouteGenerator.ROTA_HOME);
     }).catchError((erro){
       setState(() {
         _mensagemErro = "Erro ao autenticar usuário, verifique e-mail e senha"; 
@@ -74,12 +68,7 @@ class _LoginState extends State<Login> {
 
     FirebaseUser usuarioLogado = await auth.currentUser();
     if (usuarioLogado != null) {
-      Navigator.pushReplacement(
-        context, 
-        MaterialPageRoute(
-          builder: (context) => Home()
-        )
-      );
+      Navigator.pushReplacementNamed(context, RouteGenerator.ROTA_HOME);
     } 
   }
 

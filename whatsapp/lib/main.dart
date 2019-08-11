@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'Login.dart';
+import 'RouteGenerator.dart';
 
 void main(){
   runApp(
@@ -9,6 +10,8 @@ void main(){
         primaryColor: Color(0xff075e54),
         accentColor: Color(0xff25d366)
       ),
+      initialRoute: "/",
+      onGenerateRoute: RouteGenerator.generateRoute,
       debugShowCheckedModeBanner: false,
     )
   );

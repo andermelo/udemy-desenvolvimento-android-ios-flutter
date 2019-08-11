@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'Login.dart';
+import 'RouteGenerator.dart';
 import 'telas/AbaConversas.dart';
 import 'telas/AbaContatos.dart';
 
@@ -21,7 +22,6 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin{
   Future _recuperarDadosUsuario() async{
     FirebaseAuth auth = FirebaseAuth.instance;
     FirebaseUser usuarioLogado = await auth.currentUser();
-
     setState(() {
      _emailUsuario = usuarioLogado.email; 
     });
@@ -54,10 +54,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin{
   _deslogarUsuario() async{
     FirebaseAuth auth = FirebaseAuth.instance;
     await auth.signOut();
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => Login())
-    );
+    Navigator.pushReplacementNamed(context, RouteGenerator.ROTA_LOGIN);
   }
 
   @override

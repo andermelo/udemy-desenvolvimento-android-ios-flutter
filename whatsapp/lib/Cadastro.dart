@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:whatsapp/model/Usuario.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'Home.dart';
+import 'RouteGenerator.dart';
 
 class Cadastro extends StatefulWidget {
   @override
@@ -73,12 +74,8 @@ class _CadastroState extends State<Cadastro> {
       .document(firebaseUser.user.uid)
       .setData(usuario.toMap());
 
-      Navigator.pushReplacement(
-        context, 
-        MaterialPageRoute(
-          builder: (context) => Home()
-        )
-      );
+      // Navigator.pushReplacementNamed(context, RouteGenerator.ROTA_HOME);
+      Navigator.pushNamedAndRemoveUntil(context, RouteGenerator.ROTA_HOME, (_)=>false);
 
     }).catchError((erro){
       print("Erro: " + erro.toString() );
@@ -87,6 +84,7 @@ class _CadastroState extends State<Cadastro> {
         _mensagemErro = "Sucesso ao cadastrar usuario"; 
       });
     });
+        
   }
 
   @override
