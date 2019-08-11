@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'Login.dart';
 import 'telas/AbaConversas.dart';
 import 'telas/AbaContatos.dart';
 
@@ -50,10 +51,13 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin{
 
   }
 
-  _deslogarUsuario(){
+  _deslogarUsuario() async{
     FirebaseAuth auth = FirebaseAuth.instance;
-    auth.signOut();
-    // Navigator.pushReplacement(context, newRoute)
+    await auth.signOut();
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => Login())
+    );
   }
 
   @override
