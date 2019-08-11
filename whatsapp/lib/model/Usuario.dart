@@ -24,6 +24,14 @@ class Usuario {
     _senha = senha;
   }
 
+  String _urlImagem;
+
+  String get urlImagem => _urlImagem;
+
+  set urlImagem(String urlImagem) {
+    _urlImagem = urlImagem;
+  }
+
   Usuario();
 
   Map<String, dynamic> toMap(){

@@ -178,7 +178,7 @@ class _ConfiguracoesState extends State<Configuracoes> {
                     padding: EdgeInsets.only(bottom: 8),
                     child: TextField(
                       controller: _controllerNome,
-                      autofocus: true,
+                      // autofocus: true,
                       keyboardType: TextInputType.text,
                       style: TextStyle(fontSize: 20),
                       onChanged: (texto){
@@ -195,21 +195,21 @@ class _ConfiguracoesState extends State<Configuracoes> {
                       ),
                     ),
               ),
-              Padding(
-                      padding: EdgeInsets.only(top: 16),
-                      child: RaisedButton(
-                        child: Text(
-                          "Salvar",
-                          style: TextStyle(fontSize:20,color:Colors.white),
-                        ),
-                        color: Colors.green,
-                        padding: EdgeInsets.fromLTRB(32, 16, 32, 16),
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(32)),
-                        onPressed: (){
-                          _atualizarNomeFirestore();
-                        },
-                      ),
-                    ),
+              // Padding(
+              //         padding: EdgeInsets.only(top: 16),
+              //         child: RaisedButton(
+              //           child: Text(
+              //             "Salvar",
+              //             style: TextStyle(fontSize:20,color:Colors.white),
+              //           ),
+              //           color: Colors.green,
+              //           padding: EdgeInsets.fromLTRB(32, 16, 32, 16),
+              //           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(32)),
+              //           onPressed: (){
+              //             _atualizarNomeFirestore();
+              //           },
+              //         ),
+              //       ),
             ],
           ),
         ),
