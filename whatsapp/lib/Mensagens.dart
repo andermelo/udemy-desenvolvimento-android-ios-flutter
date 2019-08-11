@@ -1,10 +1,13 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:whatsapp/model/Mensagem.dart';
 import 'package:whatsapp/model/Usuario.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 
 class Mensagens extends StatefulWidget {
 
   Usuario contato;
-
   Mensagens(this.contato);
 
   @override
@@ -12,6 +15,9 @@ class Mensagens extends StatefulWidget {
 }
 
 class _MensagensState extends State<Mensagens> {
+
+  String _idUsusarioLogado;
+  String _idUsusarioDestinario;
 
   List<String> listaMensagens = [
     "Olá, tudo bem?",
@@ -31,10 +37,60 @@ class _MensagensState extends State<Mensagens> {
 
   _enviarMensagem(){
 
+    String textoMensagem = _controllerMensagem.text;
+    if (textoMensagem.isNotEmpty) {
+      
+      Mensagem mensagem = Mensagem();
+      mensagem.idUsuario = _idUsusarioLogado;
+      mensagem.mensagem = textoMensagem;
+      mensagem.urlImagem = "";
+      mensagem.tipo = "texto";
+
+      _salvarMensagem(_idUsusarioLogado, _idUsusarioDestinario, mensagem);
+
+    }
+
+  }
+
+  _salvarMensagem(String idRemetente, String idDestinatario, Mensagem msg) async{
+
+    Firestore db = Firestore.instance;
+
+    await db.collection("mensagens")
+      .document(idRemetente)
+      .collection(idDestinatario)
+      .add( msg.toMap() );
+
+      //Limpar mensagem
+      _controllerMensagem.clear();
+
+    /*
+    + mensagens
+      + anderson melo
+        + contato
+          + identificadorFirebase
+            <Mensagme>
+    */
+
   }
 
   _enviarFoto(){
   
+  }
+
+  _recuperarDadosUsuario() async{
+
+    FirebaseAuth auth = FirebaseAuth.instance;
+    FirebaseUser usuarioLogado =  await auth.currentUser();
+    _idUsusarioLogado = usuarioLogado.uid;
+
+    _idUsusarioDestinario = widget.contato.idUsuario;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _recuperarDadosUsuario();
   }
 
   @override
@@ -119,7 +175,23 @@ class _MensagensState extends State<Mensagens> {
     );
 
     return Scaffold(
-      appBar: AppBar(title: Text(widget.contato.nome),),
+      appBar: AppBar(
+        title: Row(
+          children: <Widget>[
+            CircleAvatar(
+              maxRadius: 20,
+              backgroundColor: Colors.grey,
+              backgroundImage: widget.contato.urlImagem != null
+              ? NetworkImage(widget.contato.urlImagem)
+              : null
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 8),
+              child: Text(widget.contato.nome),
+            )
+          ],
+        ),
+      ),
       body: Container(
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
