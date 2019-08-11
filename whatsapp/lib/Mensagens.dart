@@ -13,6 +13,20 @@ class Mensagens extends StatefulWidget {
 
 class _MensagensState extends State<Mensagens> {
 
+  List<String> listaMensagens = [
+    "Olá, tudo bem?",
+    "Olá, tudo bem?",
+    "Olá, tudo bem?",
+    "Olá, tudo bem?",
+    "Olá, tudo bem?",
+    "Olá, tudo bem?",
+    "Olá, tudo bem?",
+    "Olá, tudo bem?",
+    "Olá, tudo bem?",
+    "Olá, tudo bem?",
+    "Olá, tudo bem?",
+    "Olá, tudo bem?",
+  ];
   TextEditingController _controllerMensagem = TextEditingController();
 
   _enviarMensagem(){
@@ -65,6 +79,45 @@ class _MensagensState extends State<Mensagens> {
       ),
     );
 
+    var listView = Expanded(
+      child: ListView.builder(
+        itemCount: listaMensagens.length,
+        itemBuilder: (context, indice){
+
+          double larguraContainer = MediaQuery.of(context).size.width * 0.8;
+
+          //Define cores e alinhamentos
+          Alignment alinhamento = Alignment.centerRight;
+          Color cor = Color(0xffd2ffa5);
+
+          if(indice % 2 == 0){
+             alinhamento = Alignment.centerLeft;
+             cor = Color(0xfffafafa);
+          }
+
+          return Align(
+            alignment: alinhamento,
+            child: Padding(
+              padding: EdgeInsets.all(6),
+              child: Container(
+                width: larguraContainer,
+                padding: EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: cor,
+                  borderRadius: BorderRadius.all(Radius.circular(8))
+                ),
+                child: Text(
+                  listaMensagens[indice],
+                  style: TextStyle(fontSize: 18),
+                ),
+              ),
+            ),
+          );
+
+        },
+      ),
+    );
+
     return Scaffold(
       appBar: AppBar(title: Text(widget.contato.nome),),
       body: Container(
@@ -80,10 +133,10 @@ class _MensagensState extends State<Mensagens> {
               padding: EdgeInsets.all(8),
               child: Column(
                 children: <Widget>[
-                  Text("listview"),
-                  caixaMensagem,
                   //listview
+                  listView,
                   //caixa mensagem
+                  caixaMensagem,
                 ],
               ),
             ),
