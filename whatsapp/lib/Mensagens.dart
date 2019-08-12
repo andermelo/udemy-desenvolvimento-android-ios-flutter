@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:whatsapp/model/Mensagem.dart';
 import 'package:whatsapp/model/Usuario.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'dart:io';
+import 'package:image_picker/image_picker.dart';
 
 
 class Mensagens extends StatefulWidget {
@@ -16,24 +19,12 @@ class Mensagens extends StatefulWidget {
 
 class _MensagensState extends State<Mensagens> {
 
+  File _imagem;
+  bool _subindoImagem = false;
   String _idUsusarioLogado;
   String _idUsusarioDestinario;
   Firestore db = Firestore.instance;
 
-  List<String> listaMensagens = [
-    "Olá, tudo bem?",
-    "Olá, tudo bem?",
-    "Olá, tudo bem?",
-    "Olá, tudo bem?",
-    "Olá, tudo bem?",
-    "Olá, tudo bem?",
-    "Olá, tudo bem?",
-    "Olá, tudo bem?",
-    "Olá, tudo bem?",
-    "Olá, tudo bem?",
-    "Olá, tudo bem?",
-    "Olá, tudo bem?",
-  ];
   TextEditingController _controllerMensagem = TextEditingController();
 
   _enviarMensagem(){
@@ -47,7 +38,11 @@ class _MensagensState extends State<Mensagens> {
       mensagem.urlImagem = "";
       mensagem.tipo = "texto";
 
+      //Salvar mensagem para remetente
       _salvarMensagem(_idUsusarioLogado, _idUsusarioDestinario, mensagem);
+
+      //Salvar mensagem para remetente
+      _salvarMensagem(_idUsusarioDestinario, _idUsusarioLogado, mensagem);
 
     }
 
@@ -73,8 +68,54 @@ class _MensagensState extends State<Mensagens> {
 
   }
 
-  _enviarFoto(){
-  
+  _enviarFoto() async{
+    
+    File imagemSelicionada;
+    imagemSelicionada = await ImagePicker.pickImage(source: ImageSource.gallery);
+
+    String nomeImagem = DateTime.now().millisecondsSinceEpoch.toString();
+    FirebaseStorage storage = FirebaseStorage.instance;
+    StorageReference pastaRaiz = storage.ref();
+    StorageReference arquivo = pastaRaiz
+      .child("mensagens")
+      .child( _idUsusarioLogado )
+      .child(nomeImagem +".jpg");
+
+    // Upload da imagem
+    StorageUploadTask task = arquivo.putFile(imagemSelicionada);
+
+    //Controlar progresso do upload
+    task.events.listen((StorageTaskEvent storageTaskEvent){
+      if ( storageTaskEvent.type == StorageTaskEventType.progress ) {
+        setState(() {
+          _subindoImagem = true; 
+        });
+      }else if (storageTaskEvent.type == StorageTaskEventType.success) {
+          _subindoImagem = false; 
+      }
+    });
+
+    //Recuperar url da imagem
+    task.onComplete.then((StorageTaskSnapshot snapshot){
+      _recuperarUrlImagem(snapshot);
+    });
+
+  }
+
+  Future _recuperarUrlImagem(StorageTaskSnapshot snapshot) async{
+    String url = await snapshot.ref.getDownloadURL();
+
+    Mensagem mensagem = Mensagem();
+    mensagem.idUsuario = _idUsusarioLogado;
+    mensagem.mensagem = "";
+    mensagem.urlImagem = url;
+    mensagem.tipo = "imagem";
+
+    //Salvar mensagem para remetente
+    _salvarMensagem(_idUsusarioLogado, _idUsusarioDestinario, mensagem);
+
+    //Salvar mensagem para remetente
+    _salvarMensagem(_idUsusarioDestinario, _idUsusarioLogado, mensagem);
   }
 
   _recuperarDadosUsuario() async{
@@ -116,10 +157,10 @@ class _MensagensState extends State<Mensagens> {
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(36)
                       ),
-                      prefixIcon: IconButton(
-                        icon: Icon(Icons.camera_alt),
-                        onPressed: _enviarFoto
-                      )
+                      prefixIcon:
+                        _subindoImagem
+                          ? CircularProgressIndicator() 
+                          : IconButton(icon: Icon(Icons.camera_alt),onPressed: _enviarFoto),
                     ),
               ),
             ),
@@ -137,7 +178,8 @@ class _MensagensState extends State<Mensagens> {
     var stream = StreamBuilder(
       stream: db.collection("mensagens")
         .document( _idUsusarioLogado )
-        .collection( _idUsusarioDestinario).snapshots(),
+        .collection( _idUsusarioDestinario)
+        .snapshots(),
       builder: (context, snapshot){
         switch(snapshot.connectionState) {
           case ConnectionState.none:
@@ -193,10 +235,10 @@ class _MensagensState extends State<Mensagens> {
                             color: cor,
                             borderRadius: BorderRadius.all(Radius.circular(8))
                           ),
-                          child: Text(
-                            item["mensagem"],
-                            style: TextStyle(fontSize: 18),
-                          ),
+                          child: 
+                            item["tipo"] == ["texto"] 
+                            ? Text(item["mensagem"],style: TextStyle(fontSize: 18),)
+                            : Image.network(item["urlImagem"]),
                         ),
                       ),
                     );
@@ -208,45 +250,6 @@ class _MensagensState extends State<Mensagens> {
             break;
         }
       },
-    );
-
-    var listView = Expanded(
-      child: ListView.builder(
-        itemCount: listaMensagens.length,
-        itemBuilder: (context, indice){
-
-          double larguraContainer = MediaQuery.of(context).size.width * 0.8;
-
-          //Define cores e alinhamentos
-          Alignment alinhamento = Alignment.centerRight;
-          Color cor = Color(0xffd2ffa5);
-
-          if(indice % 2 == 0){
-             alinhamento = Alignment.centerLeft;
-             cor = Color(0xfffafafa);
-          }
-
-          return Align(
-            alignment: alinhamento,
-            child: Padding(
-              padding: EdgeInsets.all(6),
-              child: Container(
-                width: larguraContainer,
-                padding: EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: cor,
-                  borderRadius: BorderRadius.all(Radius.circular(8))
-                ),
-                child: Text(
-                  listaMensagens[indice],
-                  style: TextStyle(fontSize: 18),
-                ),
-              ),
-            ),
-          );
-
-        },
-      ),
     );
 
     return Scaffold(
