@@ -18,6 +18,7 @@ class _MensagensState extends State<Mensagens> {
 
   String _idUsusarioLogado;
   String _idUsusarioDestinario;
+  Firestore db = Firestore.instance;
 
   List<String> listaMensagens = [
     "Olá, tudo bem?",
@@ -53,8 +54,6 @@ class _MensagensState extends State<Mensagens> {
   }
 
   _salvarMensagem(String idRemetente, String idDestinatario, Mensagem msg) async{
-
-    Firestore db = Firestore.instance;
 
     await db.collection("mensagens")
       .document(idRemetente)
@@ -95,7 +94,7 @@ class _MensagensState extends State<Mensagens> {
 
   @override
   Widget build(BuildContext context) {
-
+    
     var caixaMensagem = Container(
       padding: EdgeInsets.all(8),
       child: Row(
@@ -133,6 +132,82 @@ class _MensagensState extends State<Mensagens> {
           )
         ],
       ),
+    );
+
+    var stream = StreamBuilder(
+      stream: db.collection("mensagens")
+        .document( _idUsusarioLogado )
+        .collection( _idUsusarioDestinario).snapshots(),
+      builder: (context, snapshot){
+        switch(snapshot.connectionState) {
+          case ConnectionState.none:
+          case ConnectionState.waiting:
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text("Carregando mensagens"),
+                  CircularProgressIndicator()
+                ],
+              ),
+            );
+            break;
+          case ConnectionState.active:
+          case ConnectionState.done:
+
+            QuerySnapshot querySnapshot =  snapshot.data;
+
+            if ( snapshot.hasError ){
+              return Expanded(
+                child: Text("Erro ao carregar os dados"),
+              );
+            }else{
+              return Expanded(
+                child: ListView.builder(
+                  itemCount: querySnapshot.documents.length,
+                  itemBuilder: (context, indice){
+
+                    //recuperar mensagem
+                    List<DocumentSnapshot> mensagens = querySnapshot.documents.toList();
+                    DocumentSnapshot item = mensagens[indice];
+
+                    double larguraContainer = MediaQuery.of(context).size.width * 0.8;
+
+                    //Define cores e alinhamentos
+                    Alignment alinhamento = Alignment.centerRight;
+                    Color cor = Color(0xffd2ffa5);
+
+                    if(_idUsusarioLogado != item["idUsuario"]){
+                      alinhamento = Alignment.centerLeft;
+                      cor = Color(0xfffafafa);
+                    }
+
+                    return Align(
+                      alignment: alinhamento,
+                      child: Padding(
+                        padding: EdgeInsets.all(6),
+                        child: Container(
+                          width: larguraContainer,
+                          padding: EdgeInsets.all(16),
+                          decoration: BoxDecoration(
+                            color: cor,
+                            borderRadius: BorderRadius.all(Radius.circular(8))
+                          ),
+                          child: Text(
+                            item["mensagem"],
+                            style: TextStyle(fontSize: 18),
+                          ),
+                        ),
+                      ),
+                    );
+
+                  },
+                ),
+              );
+            }            
+            break;
+        }
+      },
     );
 
     var listView = Expanded(
@@ -206,7 +281,7 @@ class _MensagensState extends State<Mensagens> {
               child: Column(
                 children: <Widget>[
                   //listview
-                  listView,
+                  stream,
                   //caixa mensagem
                   caixaMensagem,
                 ],

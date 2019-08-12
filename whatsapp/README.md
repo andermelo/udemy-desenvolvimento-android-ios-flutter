@@ -13,7 +13,8 @@ WhatsApp clone
     * [Configure aplicativos com mais de 64 K métodos](https://developer.android.com/studio/build/multidex)
     * [problemas com AndroidX](https://stackoverflow.com/questions/54823084/flutter-error-android-dependency-androidx-corecore-has-different-version-us)
   * [image_picker](https://pub.dev/packages/image_picker)
-  * [Widget SafeArea](#)
+  * [Widget SafeArea](https://api.flutter.dev/flutter/widgets/SafeArea-class.html)
+  * [StremBuilder](https://api.flutter.dev/flutter/widgets/StreamBuilder-class.html)
   
 
     
