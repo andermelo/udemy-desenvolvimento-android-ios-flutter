@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:whatsapp/model/Conversa.dart';
 import 'package:whatsapp/model/Mensagem.dart';
 import 'package:whatsapp/model/Usuario.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -44,7 +45,33 @@ class _MensagensState extends State<Mensagens> {
       //Salvar mensagem para remetente
       _salvarMensagem(_idUsusarioDestinario, _idUsusarioLogado, mensagem);
 
+      //salvar conversa
+      _salvarConversa( mensagem );
+
     }
+  }
+
+  _salvarConversa(Mensagem msg){
+
+    //Salvar conversa remetente
+    Conversa cRemetente = Conversa();
+    cRemetente.idRemetente = _idUsusarioLogado;
+    cRemetente.idDestinatario = _idUsusarioDestinario;
+    cRemetente.mensagem = msg.mensagem;
+    cRemetente.nome = widget.contato.nome;
+    cRemetente.caminhoFoto = widget.contato.urlImagem;
+    cRemetente.tipoMensagem = msg.tipo;
+    cRemetente.salvar();
+
+    //Salvar conversa destinatario
+    Conversa cDestinatario = Conversa();
+    cDestinatario.idRemetente = _idUsusarioDestinario;
+    cDestinatario.idDestinatario = _idUsusarioLogado;
+    cDestinatario.mensagem = msg.mensagem;
+    cDestinatario.nome = widget.contato.nome;
+    cDestinatario.caminhoFoto = widget.contato.urlImagem;
+    cDestinatario.tipoMensagem = msg.tipo;
+    cDestinatario.salvar();
 
   }
 
