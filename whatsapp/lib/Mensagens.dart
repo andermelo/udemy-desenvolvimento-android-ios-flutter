@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -26,8 +27,10 @@ class _MensagensState extends State<Mensagens> {
   String _idUsusarioLogado;
   String _idUsusarioDestinario;
   Firestore db = Firestore.instance;
-
   TextEditingController _controllerMensagem = TextEditingController();
+
+  final _controller = StreamController<QuerySnapshot>.broadcast();
+  ScrollController _scrollController = ScrollController();
 
   _enviarMensagem(){
 
@@ -146,19 +149,33 @@ class _MensagensState extends State<Mensagens> {
     _salvarMensagem(_idUsusarioDestinario, _idUsusarioLogado, mensagem);
   }
 
-  _recuperarDadosUsuario() async{
-
+  _inicializarDados() async{
     FirebaseAuth auth = FirebaseAuth.instance;
     FirebaseUser usuarioLogado =  await auth.currentUser();
     _idUsusarioLogado = usuarioLogado.uid;
-
     _idUsusarioDestinario = widget.contato.idUsuario;
+    _adicionarListenerMensagens();
   }
 
   @override
   void initState() {
     super.initState();
-    _recuperarDadosUsuario();
+    _inicializarDados();
+  }
+
+  Stream<QuerySnapshot> _adicionarListenerMensagens(){
+
+    final Stream = db.collection("mensagens")
+        .document( _idUsusarioLogado )
+        .collection( _idUsusarioDestinario)
+        .snapshots();
+
+    Stream.listen((dados){
+      _controller.add( dados );
+      Timer(Duration(seconds: 1), (){
+        _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
+      } );
+    });
   }
 
   @override
@@ -209,10 +226,7 @@ class _MensagensState extends State<Mensagens> {
     );
 
     var stream = StreamBuilder(
-      stream: db.collection("mensagens")
-        .document( _idUsusarioLogado )
-        .collection( _idUsusarioDestinario)
-        .snapshots(),
+      stream: _controller.stream,
       builder: (context, snapshot){
         switch(snapshot.connectionState) {
           case ConnectionState.none:
@@ -237,6 +251,7 @@ class _MensagensState extends State<Mensagens> {
             }else{
               return Expanded(
                 child: ListView.builder(
+                  controller: _scrollController,
                   itemCount: querySnapshot.documents.length,
                   itemBuilder: (context, indice){
 
@@ -268,7 +283,7 @@ class _MensagensState extends State<Mensagens> {
                           ),
                           child: 
                             item["tipo"] == ["texto"] 
-                            ? Text(item["mensagem"],style: TextStyle(fontSize: 18),)
+                            ? Text(item["mensagem"],style: TextStyle(fontSize: 18, color: Colors.black),)
                             : Image.network(item["urlImagem"]),
                         ),
                       ),

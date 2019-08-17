@@ -1,9 +1,12 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:whatsapp/main.dart';
 import 'package:whatsapp/model/Conversa.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:whatsapp/model/Usuario.dart';
+import 'package:undraw/undraw.dart';
+
 
 import '../RouteGenerator.dart';
 
@@ -87,14 +90,11 @@ class _AbaConversasState extends State<AbaConversas> {
 
             QuerySnapshot querySnapshot = snapshot.data;
             if (querySnapshot.documents.length == 0) {
-              return Center(
-                child: Text(
-                  "Você não tem nenhuma mensagem ainda :(",
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold
-                    ),
-                ),
+              return UnDraw(
+                color: temaPadrao.primaryColor,
+                illustration: UnDrawIllustration.elements,
+                placeholder: Text("nenhuma conversa ainda :("), //optional, default is the CircularProgressIndicator().
+                errorWidget: Icon(Icons.error_outline, color: Colors.red, size: 50), //optional, default is the Text('Could not load illustration!').
               );
             }
 
