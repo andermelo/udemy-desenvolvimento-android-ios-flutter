@@ -16,5 +16,8 @@ WhatsApp clone
   * [Widget SafeArea](https://api.flutter.dev/flutter/widgets/SafeArea-class.html)
   * [StremBuilder](https://api.flutter.dev/flutter/widgets/StreamBuilder-class.html)
   
+  <img src="../assets/images/whatsapp-login.png" width="200" />
+  <img src="../assets/images/whatsapp-cadastro.png" width="200" />
+  
 
     
