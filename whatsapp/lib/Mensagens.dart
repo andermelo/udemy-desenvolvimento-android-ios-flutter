@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:whatsapp/model/Conversa.dart';
 import 'package:whatsapp/model/Mensagem.dart';
@@ -192,12 +193,17 @@ class _MensagensState extends State<Mensagens> {
               ),
             ),
           ),
-          FloatingActionButton(
-            backgroundColor: Color(0xff075E54),
-            child: Icon(Icons.send, color: Colors.white),
-            mini: true,
-            onPressed: _enviarMensagem,
-          )
+          Platform.isIOS 
+          ? CupertinoButton(
+              child: Text("Envir"),
+              onPressed: _enviarMensagem(),
+            )
+          : FloatingActionButton(
+              backgroundColor: Color(0xff075E54),
+              child: Icon(Icons.send, color: Colors.white),
+              mini: true,
+              onPressed: _enviarMensagem,
+            ) 
         ],
       ),
     );
