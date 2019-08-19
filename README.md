@@ -150,7 +150,7 @@
     1. [Salvando conversa](whatsapp/lib/Mensagens.dart#L58-L80)
     1. [Listando conversas](whatsapp/lib/telas/AbaConversas.dart)
     1. [Ajustes & Definindo tema Android e IOS](whatsapp/lib/main.dart)
-    1. [Rolando mensagens automaticamente](#)
+    1. [Rolando mensagens automaticamente](whatsapp/lib/Mensagens.dart#L30-L33)
 
 1. Mapas e Geolocalização
     1. [Configurando API](#)
