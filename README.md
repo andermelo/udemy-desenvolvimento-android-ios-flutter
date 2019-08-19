@@ -147,9 +147,9 @@
     1. [Recuperando mensagens](whatsapp/lib/Mensagens.dart#L137-L211)
     1. [Trocando mensagens](whatsapp/lib/Mensagens.dart#L30-L119)
     1. [Enviando imagem na mensagem](whatsapp/lib/Mensagens.dart#L30-L119)
-    1. [Salvando conversa](#)
-    1. [Listando conversas](#)
-    1. [Ajustes & Definindo tema Android e IOS](#)
+    1. [Salvando conversa](whatsapp/lib/Mensagens.dart#L58-L80)
+    1. [Listando conversas](whatsapp/lib/telas/AbaConversas.dart)
+    1. [Ajustes & Definindo tema Android e IOS](whatsapp/lib/main.dart)
     1. [Rolando mensagens automaticamente](#)
 
 1. Mapas e Geolocalização
