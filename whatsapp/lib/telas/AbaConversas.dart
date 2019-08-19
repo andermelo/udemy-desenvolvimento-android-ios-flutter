@@ -6,8 +6,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:whatsapp/model/Usuario.dart';
 import 'package:undraw/undraw.dart';
-
-
 import '../RouteGenerator.dart';
 
 class AbaConversas extends StatefulWidget {
@@ -25,14 +23,8 @@ class _AbaConversasState extends State<AbaConversas> {
   @override
   void initState() {
     super.initState();
-
     _recuperarDadosUsuario();
-
     Conversa conversa = Conversa();
-    conversa.nome = "Ana Clara";
-    conversa.mensagem = "Olá, tudo bem?";
-    conversa.caminhoFoto = "https://firebasestorage.googleapis.com/v0/b/whatsapp-62949.appspot.com/o/perfil%2Fperfil1.jpg?alt=media&token=52f5ce07-855c-40b6-b422-4ef6eb40c5ca";
-    
     _listaConversas.add(conversa);
   }
 
@@ -87,7 +79,6 @@ class _AbaConversasState extends State<AbaConversas> {
           if ( snapshot.hasError ){
             return Text("Erro ao carregar os dados");
           }else{
-
             QuerySnapshot querySnapshot = snapshot.data;
             if (querySnapshot.documents.length == 0) {
               return UnDraw(
@@ -97,7 +88,6 @@ class _AbaConversasState extends State<AbaConversas> {
                 errorWidget: Icon(Icons.error_outline, color: Colors.red, size: 50), //optional, default is the Text('Could not load illustration!').
               );
             }
-
             return ListView.builder(
               itemCount: _listaConversas.length,
               itemBuilder: (context, indice){
