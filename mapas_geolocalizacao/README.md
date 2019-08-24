@@ -10,7 +10,7 @@ Entrar em `C:\Program Files\Java\jre1.8.0_221\bin>`
 
 Comando: `keytool -list -v -alias androiddebugkey -keystore c:\Users\ander\.android\debug.keystore`
 
-Senha: ´android´ - padrão Android
+Senha: `android` - padrão Android
 
 ## Recursos utilizados
 
