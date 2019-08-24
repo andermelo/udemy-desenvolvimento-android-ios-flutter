@@ -164,6 +164,27 @@
     1. [Exibindo local do usuário](#)
     1. [Utilizando Geocoding](#)
 
+1. Uber
+    1. [Configurando o projeto](#)
+    1. [Criando interface de login](#)
+    1. [Criando interface de cadastro](#)
+    1. [Configuração de rotas](#)
+    1. [Fazendo cadastro](#)
+    1. [Fazendo login & deslogando](#)
+    1. [Verificando usuário logado](#)
+    1. [Configurando mapa](#)
+    1. [Exibindo local do usuário](#)
+    1. [Criando interface de viagem](#)
+    1. [Seleção automática de imagens](#)
+    1. [Exibindo ícone de passageiro](#)
+    1. [Recuperando endereço de destino](#)
+    1. [Salvando requisição](#)
+    1. [Controlando exibição de elementos na interface](#)
+    1. [Controlando status da requisição](#)
+    1. [Cancelando requisição](#)
+    1. [Listando requisições para o motorista](#)
+    1. [Exibindo painel de corrida](#)
+
 1. [Recursos utilizados](#recursos-utilizados)
 1. [Referência bibliográfica](#referência-bibliográfica)
 
