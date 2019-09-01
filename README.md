@@ -124,7 +124,7 @@
     1. [Upload de imagens com Storage](firebase/lib/main.dart#L169-L200)
     1. [Status do Upload & Baixando imagens](firebase/lib/main.dart#L202-L211)
 
-1. WhatsApp Clone
+1. WhatsApp clone
     1. [Configurando o projeto](whatsapp/)
     1. [Criando interface de login](whatsapp/lib/Login.dart)
     1. [Criando interface de cadastro](whatsapp/lib/Cadastro.dart)
@@ -171,7 +171,7 @@
             - [parte 1](minhas_viagens/lib/Mapa.dart#L94-L136)
             - [parte 2](minhas_viagens/lib/Home.dart)
 
-1. Uber Clone
+1. Uber clone
     1. [Configurando o projeto](#)
     1. [Criando interface de login](#)
     1. [Criando interface de cadastro](#)
@@ -191,6 +191,18 @@
     1. [Cancelando requisição](#)
     1. [Listando requisições para o motorista](#)
     1. [Exibindo painel de corrida](#)
+    1. [Controlando status da requisição do motorista](#)
+    1. [Recuperando requisição ativa](#)
+    1. [Exibindo dois marcadores](#)
+    1. [Centralizando passageiro e motorista](#)
+    1. [Alterando interface pelo status da requisição](#)
+    1. [Atualizando e exibindo local do usuário - parte 1](#)
+    1. [Atualizando e exibindo local do usuário - parte 2](#)
+    1. [Iniciar corrida](#)
+    1. [Exibindo destino do passageiro](#)
+    1. [Formatação de números](#)
+    1. [Finalizando corrida e calculando valor](#)
+    1. [Finalizando o App](#)
 
 1. [Recursos utilizados](#recursos-utilizados)
 1. [Referência bibliográfica](#referência-bibliográfica)
