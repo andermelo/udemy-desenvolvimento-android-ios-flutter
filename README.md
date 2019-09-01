@@ -164,11 +164,12 @@
     1. [Exibindo local do usuário](mapas_geolocalizacao/lib/Home.dart#L182-L204)
     1. [Utilizando Geocoding](mapas_geolocalizacao/lib/Home.dart#L206-L260)
     1. [#App11 Minhas viagens](minhas_viagens/)
-        1. [Configurando mapa & exibindo marcador](#)
-        1. [Recuperando localização](#)
+        1. [Criando SplashScreen](minhas_viagens/lib/SplashScreen.dart)
+        1. [Configurando mapa & exibindo marcador](minhas_viagens/lib/Mapa.dart#L32-L63)
+        1. [Recuperando localização](minhas_viagens/lib/Mapa.dart#L74-L92)
         1. Salvando e listando viagens
-            - [parte 1](#)
-            - [parte 2](#)
+            - [parte 1](minhas_viagens/lib/Mapa.dart#L94-L136)
+            - [parte 2](minhas_viagens/lib/Home.dart)
 
 1. Uber
     1. [Configurando o projeto](#)
