@@ -1,5 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.minhas_viagens">
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <!-- io.flutter.app.FlutterApplication is an android.app.Application that
          calls FlutterMain.startInitialization(this); in its onCreate method.
@@ -31,6 +33,6 @@
         </activity>
 
         <meta-data android:name="com.google.android.geo.API_KEY"
-                   android:value="AIzaSyDJn7ICNkS1KhuYMDXKAcfijmwZ4373smk"/>
+                   android:value="AIzaSyC0ZSkY4FUVCqKEOJW_RHN7cxZTzjNccvY"/>
     </application>
 </manifest>

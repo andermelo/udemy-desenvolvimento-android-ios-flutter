@@ -43,5 +43,7 @@
 	<false/>
 	<key>io.flutter.embedded_views_preview</key>
 	<true/>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Necessário utilizar sua localização.</string>
 </dict>
 </plist>
