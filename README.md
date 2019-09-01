@@ -124,7 +124,7 @@
     1. [Upload de imagens com Storage](firebase/lib/main.dart#L169-L200)
     1. [Status do Upload & Baixando imagens](firebase/lib/main.dart#L202-L211)
 
-1. WhatsApp [App 11](whatsapp/)
+1. WhatsApp Clone
     1. [Configurando o projeto](whatsapp/)
     1. [Criando interface de login](whatsapp/lib/Login.dart)
     1. [Criando interface de cadastro](whatsapp/lib/Cadastro.dart)
@@ -171,7 +171,7 @@
             - [parte 1](minhas_viagens/lib/Mapa.dart#L94-L136)
             - [parte 2](minhas_viagens/lib/Home.dart)
 
-1. Uber
+1. Uber Clone
     1. [Configurando o projeto](#)
     1. [Criando interface de login](#)
     1. [Criando interface de cadastro](#)
