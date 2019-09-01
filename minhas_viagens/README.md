@@ -1,6 +1,6 @@
 # Minhas Viagens
 
-App simples utilizando GoogleMaps
+App simples utilizando GoogleMaps e Firebase
 
 ![Minhas Viagens logo](../assets/images/minhas-viagens.jpg)
 
