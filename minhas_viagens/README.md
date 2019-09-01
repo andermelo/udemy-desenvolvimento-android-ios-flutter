@@ -2,7 +2,7 @@
 
 App simples utilizando GoogleMaps
 
-![Minhas Viagens logo](images/logo.png)
+![Minhas Viagens logo](../asstes/images/minhas-viagens.jpg)
 
 ## Recursos utilizados
  * [Google Maps for Flutter (Developers Preview)](https://pub.dev/packages/google_maps_flutter)
