@@ -6,7 +6,7 @@ Projeto de estudo com o Firebase e Flutter
 
 criando chaves para o Firebase no meu PC com Windows
 
-Entrar em `C:\Program Files\Java\jre1.8.0_221\bin>`
+Entrar em `C:\Program Files\Java\jre1.8.0_221\bin`
 
 Comando: `keytool -list -v -alias androiddebugkey -keystore c:\Users\ander\.android\debug.keystore`
 
