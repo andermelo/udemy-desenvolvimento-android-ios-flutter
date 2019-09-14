@@ -2,8 +2,7 @@
 
 WhatsApp clone
 
-  <img src="../assets/images/whatsapp-login.png" width="200" />
-  <img src="../assets/images/whatsapp-cadastro.png" width="200" />
+<img src="../assets/images/whatsapp-login.png" width="200" />
 
 ## Recursos utilizados
 
