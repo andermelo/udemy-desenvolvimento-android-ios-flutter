@@ -35,36 +35,43 @@ class _HomeState extends State<Home> {
                     height: 150,
                   ),
                 ),
-                TextField(
-                  controller: _controllerEmail,
-                  autofocus: true,
-                  keyboardType: TextInputType.emailAddress,
-                  style: TextStyle(fontSize: 20),
-                  decoration: InputDecoration(
-                    contentPadding: EdgeInsets.fromLTRB(32, 16, 32, 16),
-                    hintText: "e-mail",
-                    filled: true,
-                    fillColor: Colors.white,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(6)
-                    )
+                Padding(
+                  padding: EdgeInsets.only(bottom: 15),
+                  child: TextField(
+                    controller: _controllerEmail,
+                    autofocus: true,
+                    keyboardType: TextInputType.emailAddress,
+                    style: TextStyle(fontSize: 20),
+                    decoration: InputDecoration(
+                      contentPadding: EdgeInsets.fromLTRB(32, 16, 32, 16),
+                      hintText: "e-mail",
+                      filled: true,
+                      fillColor: Colors.white,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(6)
+                      )
+                    ),
                   ),
                 ),
-                TextField(
-                  controller: _controllerSenha,
-                  obscureText: true,
-                  keyboardType: TextInputType.emailAddress,
-                  style: TextStyle(fontSize: 20),
-                  decoration: InputDecoration(
-                    contentPadding: EdgeInsets.fromLTRB(32, 16, 32, 16),
-                    hintText: "senha",
-                    filled: true,
-                    fillColor: Colors.white,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(6)
-                    )
+                Padding(
+                  padding: EdgeInsets.only(bottom: 15),
+                  child: TextField(
+                    controller: _controllerSenha,
+                    obscureText: true,
+                    keyboardType: TextInputType.emailAddress,
+                    style: TextStyle(fontSize: 20),
+                    decoration: InputDecoration(
+                      contentPadding: EdgeInsets.fromLTRB(32, 16, 32, 16),
+                      hintText: "senha",
+                      filled: true,
+                      fillColor: Colors.white,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(6)
+                      )
+                    ),
                   ),
                 ),
+                
                 Padding(
                   padding: EdgeInsets.only(top: 16, bottom: 10),
                   child: RaisedButton(
@@ -83,12 +90,7 @@ class _HomeState extends State<Home> {
                       style: TextStyle(color: Colors.white),
                     ),
                     onTap: (){
-                      Navigator.push(
-                        context, 
-                        MaterialPageRoute(
-                          builder: (context) => Cadastro()
-                        )
-                      );
+                      Navigator.pushNamed(context, "/cadastro");
                     },
                   ),
                 ),
