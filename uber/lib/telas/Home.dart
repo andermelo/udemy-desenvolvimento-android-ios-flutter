@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:uber/telas/Cadastro.dart';
 
 class Home extends StatefulWidget {
   @override
