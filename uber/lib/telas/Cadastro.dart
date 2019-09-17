@@ -65,20 +65,25 @@ class _CadastroState extends State<Cadastro> {
       email: usuario.email,
       password: usuario.senha
     ).then((firebaseUser){
+
       db.collection("usuarios")
         .document(firebaseUser.user.uid)
         .setData( usuario.toMap() );
+
+      //redirecionar para o painel, de acordo com o tipoUsuario
+      switch ( usuario.tipoUsuario ) {
+        case "motorista":
+          Navigator.pushNamedAndRemoveUntil(context, '/painel-motorista', (_) => false);
+          break;
+        case "passageiro":
+          Navigator.pushNamedAndRemoveUntil(context, '/painel-passageiro', (_) => false);
+          break;
+      }
+      
+    }).catchError((error){
+      _mensagemErro = "Erro no cadastro, verifique o nome, e-mail e senha e tente novamente";
     });
 
-    //redirecionar para o painel, de acordo com o tipoUsuario
-    switch ( usuario.tipoUsuario ) {
-      case "motorista":
-        Navigator.pushNamedAndRemoveUntil(context, '/painel-motorista', (_) => false);
-        break;
-      case "passageiro":
-        Navigator.pushNamedAndRemoveUntil(context, '/painel-passageiro', (_) => false);
-        break;
-    }
   }
 
   @override
