@@ -205,13 +205,13 @@
     1. [Finalizando o App](#)
     
 1. Publicando seu App
-    1.[Fazendo configurações no App](#)
-    1.[ScreenShot e Vídeo](#)
-    1.[Edição de imagens - parte 1](#)
-    1.[Edição de imagens - parte 2](#)
-    1.[Adicionando ícones](#)
-    1.[[ANDROID] Gerando o arquivo para publicação](#)
-    1.[[ANDROID] Publicando na Google Play](#)
+    1. [Fazendo configurações no App](#)
+    1. [ScreenShot e Vídeo](#)
+    1. [Edição de imagens - parte 1](#)
+    1. [Edição de imagens - parte 2](#)
+    1. [Adicionando ícones](#)
+    1. [[ANDROID] Gerando o arquivo para publicação](#)
+    1. [[ANDROID] Publicando na Google Play](#)
 
 1. [Recursos utilizados](#recursos-utilizados)
 1. [Referência bibliográfica](#referência-bibliográfica)
