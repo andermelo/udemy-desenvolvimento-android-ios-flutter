@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:uber/model/Usuario.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -12,6 +13,7 @@ class _HomeState extends State<Home> {
   TextEditingController _controllerEmail = TextEditingController(text: "anderson@gmail.com");
   TextEditingController _controllerSenha = TextEditingController(text: "123456");
   String _mensagemErro = "";
+  bool _carregando = false;
 
   _validarCampos(){
     //recuperar dados
@@ -47,6 +49,10 @@ class _HomeState extends State<Home> {
   
   _logarUsuario( Usuario usuario){
 
+    setState(() {
+     _carregando = true; 
+    });
+
     FirebaseAuth auth = FirebaseAuth.instance;
 
     auth.signInWithEmailAndPassword(
@@ -54,12 +60,59 @@ class _HomeState extends State<Home> {
       password: usuario.senha
     ).then((firebaseuser){
 
-      Navigator.pushReplacementNamed(context, "/painel-passageiro");
+      // Navigator.pushReplacementNamed(context, "/painel-passageiro");
+      _redirecionaPainelPorTipoUsuario( firebaseuser.user.uid );
 
     }).catchError((error){
       _mensagemErro = "Erro na autenticação, verifique e-mail e senha e tente novamente";
     });
 
+  }
+
+  _redirecionaPainelPorTipoUsuario(String idUsuario) async {
+
+    Firestore db  = Firestore.instance;
+
+    DocumentSnapshot snapshot = await db.collection("usuarios")
+          .document( idUsuario )
+          .get();
+
+    Map<String, dynamic> dados = snapshot.data;
+    String tipoUsuario = dados["tipoUsuario"];
+
+    setState(() {
+     _carregando = false; 
+    });
+
+    // print(dados);
+
+    switch (tipoUsuario) {
+      case "motorista" :
+        Navigator.pushReplacementNamed(context, "/painel-motorista");        
+        break;
+      case "passageiro" :
+        Navigator.pushReplacementNamed(context, "/painel-passageiro");        
+        break;
+    }
+
+  }
+
+  _verificarUsuarioLogado() async {
+    FirebaseAuth auth = FirebaseAuth.instance;
+
+    FirebaseUser usuarioLogado = await auth.currentUser();
+
+    if (usuarioLogado != null) {
+      String idUsuario = usuarioLogado.uid;
+      _redirecionaPainelPorTipoUsuario(idUsuario);
+    }    
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    _verificarUsuarioLogado();
   }
 
 
@@ -148,6 +201,9 @@ class _HomeState extends State<Home> {
                     },
                   ),
                 ),
+                _carregando
+                  ? Padding(padding: EdgeInsets.only(top: 10),child: Center(child: CircularProgressIndicator(backgroundColor: Colors.white,)),)
+                  : Container(),
                 Padding(
                   padding: EdgeInsets.only(top: 16),
                   child: Center(
