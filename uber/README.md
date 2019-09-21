@@ -41,7 +41,7 @@ android {
 
 ### Resolvendo outro problema de AndroidX
 
-> Eu o resolvi atualizando minha dependência do gradle no arquivo android/build.gradle: classpath 'com.android.tools.build:gradle:3.3.1' (estava anteriormente na versão 3.2.1)
+> Eu resolvi atualizando minha dependência do gradle no arquivo android/build.gradle: classpath 'com.android.tools.build:gradle:3.3.1' (estava anteriormente na versão 3.2.1)
 
 
 ## Recursos utilizados
