@@ -39,6 +39,11 @@ android {
 }
 ```
 
+### Resolvendo outro problema de AndroidX
+
+> Eu o resolvi atualizando minha dependência do gradle no arquivo android/build.gradle: classpath 'com.android.tools.build:gradle:3.3.1' (estava anteriormente na versão 3.2.1)
+
+
 ## Recursos utilizados
   * [AndroidX](https://developer.android.com/jetpack/androidx/migrate) 
   * [MultiDex](https://developer.android.com/studio/build/multidex?hl=pt-BR)
@@ -48,6 +53,8 @@ android {
   * [firebase_core](https://pub.dev/packages/firebase_core)
   * [firebase_auth](https://pub.dev/packages/firebase_auth) 
   * [cloud_firestore](https://pub.dev/packages/cloud_firestore)
+  * [google_maps_flutter](https://pub.dev/packages/google_maps_flutter)
+  * [Google Cloud](https://console.cloud.google.com)
 
  
 
