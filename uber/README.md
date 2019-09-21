@@ -14,7 +14,7 @@ Senha: `android` - padrão Android
 
 #### Correção do erro em AndroidX
 
-(Como migrar para o AndroidX)[https://developer.android.com/jetpack/androidx/migrate]
+[Como migrar para o AndroidX](https://developer.android.com/jetpack/androidx/migrate)
 
 `android/gradle.properties`
 
