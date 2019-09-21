@@ -55,6 +55,7 @@ android {
   * [cloud_firestore](https://pub.dev/packages/cloud_firestore)
   * [google_maps_flutter](https://pub.dev/packages/google_maps_flutter)
   * [Google Cloud](https://console.cloud.google.com)
+  * [geolocator](https://pub.dev/packages/geolocator)
 
  
 
