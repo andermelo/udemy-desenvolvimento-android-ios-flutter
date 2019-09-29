@@ -199,11 +199,22 @@ class _PainelPassageiroState extends State<PainelPassageiro> {
 
     Firestore db = Firestore.instance;
 
+    //salvar requisicao
     db.collection("requisicoes")
-      .add(requisicao.toMap());
+      .document(requisicao.id)
+      .setData(requisicao.toMap());
 
-    _statusAguardando();
-    
+    //salvar requisicao ativa
+    Map<String, dynamic> dadosRequisicaoAtiva = {};
+    dadosRequisicaoAtiva["id_requisicao"] = requisicao.id;
+    dadosRequisicaoAtiva["id_usuario"] = passageiro.idUsuario;
+    dadosRequisicaoAtiva["status"] = StatusRequisicao.AGUARDANDO;
+
+
+    db.collection("requisicao_ativa")
+      .document(passageiro.idUsuario)
+      .setData(dadosRequisicaoAtiva);
+
   }
 
   _alterarBotaoPrincipal(String texto, Color cor, Function funcao){
@@ -240,12 +251,49 @@ class _PainelPassageiroState extends State<PainelPassageiro> {
 
   }
 
+  _adicionarListenerRequisicaoAtiva() async{
+    FirebaseUser firebaseUser = await UsuarioFirebase.getUsuarioAtual();
+    Firestore db = Firestore.instance;
+    await db.collection("requisicao_ativa")
+            .document(firebaseUser.uid)
+            .snapshots()
+            .listen((snapshot){
+            // print("dados recuperados: " + snapshot.data.toString() );
+            if (snapshot.data != null) {
+              Map<String,dynamic> dados = snapshot.data;
+              String status = dados["status"];
+              String idRequisicao = dados["id_requisicao"];
+
+              switch (status) {
+                case StatusRequisicao.AGUARDANDO:
+                  _statusAguardando();
+                  break;
+                case StatusRequisicao.A_CAMINHO:
+                  
+                  break;
+                case StatusRequisicao.VIAGEM:
+                  
+                  break;
+                case StatusRequisicao.FINALIZADA:
+                  
+                  break;
+              }
+            }else{
+              _statusUberNaoChamado();
+            }
+
+    });
+  }
+
   @override
   void initState() {
     super.initState();
     _recuperarUltimaLocalizacaoConhecida();
     _adicionarListenerLocalizacao();
-    _statusUberNaoChamado();
+
+    //adicionar listener para requisicao ativa
+    _adicionarListenerRequisicaoAtiva();
+
   }
 
   @override

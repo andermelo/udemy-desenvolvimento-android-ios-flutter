@@ -1,8 +1,8 @@
 class StatusRequisicao{
 
-  static String AGUARDANDO = "aguardadando";
-  static String A_CAMINHO = "a_caminho";
-  static String VIAGEM = "viagem";
-  static String FINALIZADA = "finalizada";
+  static const String AGUARDANDO = "aguardadando";
+  static const String A_CAMINHO = "a_caminho";
+  static const String VIAGEM = "viagem";
+  static const String FINALIZADA = "finalizada";
 
 }
