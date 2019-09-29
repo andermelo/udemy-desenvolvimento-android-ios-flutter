@@ -291,7 +291,6 @@ class _PainelPassageiroState extends State<PainelPassageiro> {
             }else{
               _statusUberNaoChamado();
             }
-
     });
   }
 

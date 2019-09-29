@@ -36,6 +36,21 @@ class Usuario {
     _tipoUsuario = tipoUsuario;
   }
 
+  double _latitude;
+
+  double get latitude => _latitude;
+
+  set latitude(double latitude) {
+    _latitude = latitude;
+  }
+  double _longitude;
+
+  double get longitude => _longitude;
+
+  set longitude(double longitude) {
+    _longitude = longitude;
+  }
+
   Usuario();
 
   String verificaTipoUsuario(bool tipoUsuario){
@@ -46,7 +61,9 @@ class Usuario {
     Map<String, dynamic> map = {
       "nome" : this.nome,
       "email" : this.email,
-      "tipoUsuario" : this.tipoUsuario
+      "tipoUsuario" : this.tipoUsuario,
+      "latitude" : this.latitude,
+      "longitude" : this.longitude,
     };
     return map;
   }
