@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:uber/model/Usuario.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'dart:async';
 
 import 'package:uber/util/StatusRequisicao.dart';
@@ -149,13 +150,13 @@ class _CorridaState extends State<Corrida> {
     db.collection("requisicoes")
       .document(idRequisicao).updateData({
         "motorista" : motorista.toMap(),
-        "status" : "StatusRequisicao.A_CAMINHO",
+        "status" : StatusRequisicao.A_CAMINHO,
       }).then((_){
         //atualizar requisicao ativa - passageiro
         String idPassageiro = _dadosRequisicao["possageiro"]["idUsuario"];
         db.collection("requisicao_ativa")
-          .document(idPassageiro).updateData(
-            {"status" : StatusRequisicao.A_CAMINHO,
+          .document(idPassageiro).updateData({
+            "status" : StatusRequisicao.A_CAMINHO,
         });
 
         //salvar requisicao ativa para motorista
@@ -221,8 +222,10 @@ class _CorridaState extends State<Corrida> {
     super.initState();
     _recuperarUltimaLocalizacaoConhecida();
     _adicionarListenerLocalizacao();
+
+    //Recuperar requisicao e
+    // adicionar listener para mudança de status
     _recuperarRequisicao();
-    _adicionarListenerRequisicao();
   }
 
   @override
@@ -252,8 +255,7 @@ class _CorridaState extends State<Corrida> {
                 ? EdgeInsets.fromLTRB(20, 10, 20, 25)
                 : EdgeInsets.all(10),
                 child: RaisedButton(
-                    child: Text(_textoBotao.toUpperCase(), 
-
+                    child: Text(_textoBotao.toUpperCase(),
                       style: TextStyle(color: Colors.white,fontSize: 20),
                     ),
                     color: _corBotao,
