@@ -138,58 +138,6 @@ class _CorridaState extends State<Corrida> {
     _adicionarListenerRequisicao();
   }
 
-  _aceitarCorrida() async{
-    //Recuperar dados do motorista
-    Usuario motorista = await UsuarioFirebase.getDadosUsuarioLogado();
-    motorista.latitude = _localMotorista.latitude;
-    motorista.longitude = _localMotorista.longitude;
-
-
-    Firestore db = Firestore.instance;
-    String idRequisicao = _dadosRequisicao["id"];
-    db.collection("requisicoes")
-      .document(idRequisicao).updateData({
-        "motorista" : motorista.toMap(),
-        "status" : StatusRequisicao.A_CAMINHO,
-      }).then((_){
-        //atualizar requisicao ativa - passageiro
-        String idPassageiro = _dadosRequisicao["possageiro"]["idUsuario"];
-        db.collection("requisicao_ativa")
-          .document(idPassageiro).updateData({
-            "status" : StatusRequisicao.A_CAMINHO,
-        });
-
-        //salvar requisicao ativa para motorista
-        String idMotorista = motorista.idUsuario;
-        db.collection("requisicao_ativa_motorista")
-          .document(idMotorista)
-          .setData({
-            "id_requisicao" : idRequisicao,
-            "id_usuario" : idMotorista,
-            "status" : StatusRequisicao.A_CAMINHO,
-          });
-      });
-
-  }
-
-  _statusAguardando(){
-    _alterarBotaoPrincipal(
-      "Aceitar corrida", 
-      Color(0xff1ebbd8), 
-      (){
-        _aceitarCorrida();
-      }    
-    );
-  }
-
-  _statusACaminho(){
-    _alterarBotaoPrincipal(
-      "A caminho do passageiro", 
-      Colors.grey, 
-      null    
-    );
-  }
-
   _adicionarListenerRequisicao() async{
     Firestore db = Firestore.instance;
     String idRequisicao = _dadosRequisicao["id"];
@@ -217,14 +165,66 @@ class _CorridaState extends State<Corrida> {
             });
   }
 
+  _statusAguardando(){
+    _alterarBotaoPrincipal(
+      "Aceitar corrida", 
+      Color(0xff1ebbd8), 
+      (){
+        _aceitarCorrida();
+      }    
+    );
+  }
+
+  _statusACaminho(){
+    _alterarBotaoPrincipal(
+      "A caminho do passageiro", 
+      Colors.grey, 
+      null    
+    );
+  }
+
+  _aceitarCorrida() async{
+    //Recuperar dados do motorista
+    Usuario motorista = await UsuarioFirebase.getDadosUsuarioLogado();
+    motorista.latitude = _localMotorista.latitude;
+    motorista.longitude = _localMotorista.longitude;
+
+
+    Firestore db = Firestore.instance;
+    String idRequisicao = _dadosRequisicao["id"];
+    
+    db.collection("requisicoes")
+      .document(idRequisicao).updateData({
+        "motorista" : motorista.toMap(),
+        "status" : StatusRequisicao.A_CAMINHO,
+      }).then((_){
+        //atualizar requisicao ativa - passageiro
+        String idPassageiro = _dadosRequisicao["passageiro"]["idUsuario"];
+        db.collection("requisicao_ativa")
+          .document(idPassageiro).updateData({
+            "status" : StatusRequisicao.A_CAMINHO,
+        });
+
+        //salvar requisicao ativa para motorista
+        String idMotorista = motorista.idUsuario;
+        db.collection("requisicao_ativa_motorista")
+          .document(idMotorista)
+          .setData({
+            "id_requisicao" : idRequisicao,
+            "id_usuario" : idMotorista,
+            "status" : StatusRequisicao.A_CAMINHO,
+          });
+      });
+
+  }
+
   @override
   void initState() {
     super.initState();
     _recuperarUltimaLocalizacaoConhecida();
     _adicionarListenerLocalizacao();
 
-    //Recuperar requisicao e
-    // adicionar listener para mudança de status
+    //Recuperar requisicao e adicionar listener para mudança de status
     _recuperarRequisicao();
   }
 
