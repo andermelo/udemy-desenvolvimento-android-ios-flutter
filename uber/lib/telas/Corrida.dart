@@ -181,6 +181,63 @@ class _CorridaState extends State<Corrida> {
       Colors.grey, 
       null    
     );
+
+    double latitudePassageiro = _dadosRequisicao["passageiro"]["latitude"];
+    double longitudePassageiro = _dadosRequisicao["passageiro"]["longitude"];
+
+    double latitudeMotorista = _dadosRequisicao["motorista"]["latitude"];
+    double longitudeMotorista = _dadosRequisicao["motorista"]["longitude"];
+
+    _exibirDoisMarcadore(
+      LatLng(latitudeMotorista,longitudeMotorista),
+      LatLng(latitudePassageiro,longitudePassageiro)
+    );
+  }
+
+  _exibirDoisMarcadore(LatLng latLngMotorista, LatLng latLngPassageiro){
+
+    double pixelRatio = MediaQuery.of(context).devicePixelRatio;
+
+    Set<Marker> _listaMarcadores = {};
+
+    BitmapDescriptor.fromAssetImage(
+        ImageConfiguration(devicePixelRatio: pixelRatio), 
+        "images/motorista.png"
+    ).then((BitmapDescriptor icone){
+      Marker marcador1 = Marker(
+        markerId: MarkerId("marcador-motorista"),
+        position: LatLng(latLngMotorista.latitude, latLngMotorista.longitude),
+        infoWindow: InfoWindow(
+          title: "Local motorista"
+        ),
+        icon:  icone
+      );
+      _listaMarcadores.add(marcador1);
+    });
+
+    BitmapDescriptor.fromAssetImage(
+        ImageConfiguration(devicePixelRatio: pixelRatio), 
+        "images/passageiro.png"
+    ).then((BitmapDescriptor icone){
+      Marker marcador2 = Marker(
+        markerId: MarkerId("marcador-passageiro"),
+        position: LatLng(latLngPassageiro.latitude, latLngPassageiro.longitude),
+        infoWindow: InfoWindow(
+          title: "Local passageiro"
+        ),
+        icon:  icone
+      );
+      _listaMarcadores.add(marcador2);
+    });
+
+    setState(() {
+     _marcadores = _listaMarcadores;
+     _movimentarCamera(CameraPosition(
+       target:LatLng(latLngMotorista.latitude, latLngMotorista.longitude),
+       zoom: 18
+      ));
+    });
+
   }
 
   _aceitarCorrida() async{

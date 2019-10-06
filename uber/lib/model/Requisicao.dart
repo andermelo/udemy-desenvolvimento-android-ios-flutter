@@ -53,6 +53,8 @@ class Requisicao {
       "nome" : this.passageiro.nome,
       "email" : this.passageiro.email,
       "tipoUsuario" : this.passageiro.tipoUsuario,
+      "longitude" : this.passageiro.longitude,
+      "latitude" : this.passageiro.latitude,
     };
 
     Map<String, dynamic> dadosDestino = {

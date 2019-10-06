@@ -26,6 +26,7 @@ class _PainelPassageiroState extends State<PainelPassageiro> {
   );
   Set<Marker> _marcadores = {};
   String _idRequisicao;
+  Position _localPassageiro;
 
   //Controles para exibição na tela
   bool _exibirCaixaEnderecoDestino = true;
@@ -68,7 +69,7 @@ class _PainelPassageiroState extends State<PainelPassageiro> {
          target: LatLng(position.latitude, position.longitude),
          zoom: 19
        );
-       
+       _localPassageiro = position;       
        _movimentarCamera(_posicaoCamera);
 
     });
@@ -83,11 +84,8 @@ class _PainelPassageiroState extends State<PainelPassageiro> {
     setState(() {
      if (position != null) {
        _exibirMarcadorPassageiro(position);
-       _posicaoCamera = CameraPosition(
-         target: LatLng(position.latitude, position.longitude),
-         zoom: 19
-       );
-       
+       _posicaoCamera = CameraPosition(target: LatLng(position.latitude, position.longitude),zoom:19);
+       _localPassageiro = position;
        _movimentarCamera(_posicaoCamera);
      } 
     });
@@ -191,7 +189,9 @@ class _PainelPassageiroState extends State<PainelPassageiro> {
         + status (aguardando, a_caminho...finalizado)
     */
 
-    Usuario passageiro = await UsuarioFirebase.getDadosUsuarioLogado();
+    Usuario passageiro   = await UsuarioFirebase.getDadosUsuarioLogado();
+    passageiro.latitude  = _localPassageiro.latitude;
+    passageiro.longitude = _localPassageiro.longitude;
 
     Requisicao requisicao = Requisicao();
     requisicao.destino = destino;
@@ -349,6 +349,7 @@ class _PainelPassageiroState extends State<PainelPassageiro> {
               markers: _marcadores,
               myLocationButtonEnabled: false, //retirar botao de encontrar minha localização
               // -23.609323, -46.768152
+              // -23.608463, -46.767734
             ),
             Visibility(
               visible: _exibirCaixaEnderecoDestino,
