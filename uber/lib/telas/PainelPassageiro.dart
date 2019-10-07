@@ -350,6 +350,7 @@ class _PainelPassageiroState extends State<PainelPassageiro> {
               myLocationButtonEnabled: false, //retirar botao de encontrar minha localização
               // -23.609323, -46.768152
               // -23.608463, -46.767734
+              // -23.608089, -46.768206
             ),
             Visibility(
               visible: _exibirCaixaEnderecoDestino,
