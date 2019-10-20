@@ -83,10 +83,7 @@ class _PainelPassageiroState extends State<PainelPassageiro> {
 
     setState(() {
      if (position != null) {
-       _exibirMarcadorPassageiro(position);
-       _posicaoCamera = CameraPosition(target: LatLng(position.latitude, position.longitude),zoom:19);
-       _localPassageiro = position;
-       _movimentarCamera(_posicaoCamera);
+       
      } 
     });
   }
@@ -271,47 +268,61 @@ class _PainelPassageiroState extends State<PainelPassageiro> {
       });    
   }
 
-  _adicionarListenerRequisicaoAtiva() async{
+  _recuperarRequisicaoAtiva() async{
     FirebaseUser firebaseUser = await UsuarioFirebase.getUsuarioAtual();
-    Firestore db = Firestore.instance;
-    await db.collection("requisicao_ativa")
-            .document(firebaseUser.uid)
-            .snapshots()
-            .listen((snapshot){
-            // print("dados recuperados: " + snapshot.data.toString() );
-            if (snapshot.data != null) {
-              Map<String,dynamic> dados = snapshot.data;
-              String status = dados["status"];
-              _idRequisicao = dados["id_requisicao"];
 
-              switch (status) {
-                case StatusRequisicao.AGUARDANDO:
-                  _statusAguardando();
-                  break;
-                case StatusRequisicao.A_CAMINHO:
-                  _statusACaminho();
-                  break;
-                case StatusRequisicao.VIAGEM:
-                  
-                  break;
-                case StatusRequisicao.FINALIZADA:
-                  
-                  break;
+    Firestore db = Firestore.instance;
+    DocumentSnapshot documentSnapshot = await db.collection("requisicao_ativa")
+            .document(firebaseUser.uid)
+            .get();
+    
+    if (documentSnapshot.data != null) {
+
+      Map<String, dynamic> dados = documentSnapshot.data;
+      _idRequisicao = dados["id_requisicao"];
+      _adicionarListenerRequisicao( _idRequisicao );
+    }else{
+      _statusUberNaoChamado();
+    }
+
+  }
+
+  _adicionarListenerRequisicao(String idRequisicao) async{
+    Firestore db = Firestore.instance;
+    await db.collection("requisicoes")
+            .document(idRequisicao).snapshots().listen((snapshot){
+              if (snapshot.data != null) {
+                Map<String,dynamic> dados = snapshot.data;
+                String status = dados["status"];
+                _idRequisicao = dados["id_requisicao"];
+
+                switch (status) {
+                  case StatusRequisicao.AGUARDANDO:
+                    _statusAguardando();
+                    break;
+                  case StatusRequisicao.A_CAMINHO:
+                    _statusACaminho();
+                    break;
+                  case StatusRequisicao.VIAGEM:
+                    
+                    break;
+                  case StatusRequisicao.FINALIZADA:
+                    
+                    break;
+                }
               }
-            }else{
-              _statusUberNaoChamado();
-            }
-    });
+            });
   }
 
   @override
   void initState() {
     super.initState();
-    _recuperarUltimaLocalizacaoConhecida();
-    _adicionarListenerLocalizacao();
 
     //adicionar listener para requisicao ativa
-    _adicionarListenerRequisicaoAtiva();
+    _recuperarRequisicaoAtiva();
+
+    _recuperarUltimaLocalizacaoConhecida();
+    _adicionarListenerLocalizacao();
 
   }
 
