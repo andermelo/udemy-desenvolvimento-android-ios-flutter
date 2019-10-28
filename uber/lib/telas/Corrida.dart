@@ -323,7 +323,7 @@ class _CorridaState extends State<Corrida> {
     //Recuperar requisicao e adicionar listener para mudança de status
     _adicionarListenerRequisicao();
 
-    _recuperarUltimaLocalizacaoConhecida();
+    // _recuperarUltimaLocalizacaoConhecida();
     _adicionarListenerLocalizacao();
 
     
