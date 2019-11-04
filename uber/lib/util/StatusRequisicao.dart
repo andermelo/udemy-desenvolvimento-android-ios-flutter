@@ -7,7 +7,7 @@ class StatusRequisicao{
   Motorista:
     1) longe do passageiro: -23.609397, -46.768992
     2) intermediário: -23.609033, -46.769075
-    3) proximo ao passageiro: -23.608626, -46.768136
+    3) proximo ao passageiro: -23.608626, -46.768136 / -23.608628, -46.768171
   **/
 
   static const String AGUARDANDO = "aguardadando";
