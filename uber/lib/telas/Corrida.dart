@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:intl/intl.dart';
 import 'package:uber/model/Usuario.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'dart:async';
@@ -175,7 +176,7 @@ class _CorridaState extends State<Corrida> {
                     _statusEmViagem();
                     break;
                   case StatusRequisicao.FINALIZADA:
-                    
+                    _statusFinalizada();
                     break;
                 }
               }
@@ -271,8 +272,6 @@ class _CorridaState extends State<Corrida> {
       }    
     );
 
-
-
     double latitudeDestino = _dadosRequisicao["destino"]["latitude"];
     double longitudeDestino = _dadosRequisicao["destino"]["longitude"];
 
@@ -312,6 +311,61 @@ class _CorridaState extends State<Corrida> {
   }
 
   _finalizarCorrida(){
+
+    Firestore db = Firestore.instance;
+    db.collection("requisicoes")
+    .document( _idRequisicao )
+    .updateData({
+      "status" : StatusRequisicao.FINALIZADA
+    });
+
+    String idPassageiro = _dadosRequisicao["passageiro"]["idUsuario"];
+    db.collection("requisicao_ativa")
+    .document( idPassageiro )
+    .updateData({ "status": StatusRequisicao.FINALIZADA });
+
+    String idMotorista = _dadosRequisicao["motorista"]["idUsuario"];
+    db.collection("requisicao_ativa_motorista")
+    .document( idMotorista )
+    .updateData({ "status": StatusRequisicao.FINALIZADA });
+    
+  }
+
+  _statusFinalizada() async{
+
+    //Calcula valor da corrida
+    double latitudeDestino = _dadosRequisicao["destino"]["latitude"];
+    double longitudeDestino = _dadosRequisicao["destino"]["longitude"];
+
+    double latitudeOrigem = _dadosRequisicao["origem"]["latitude"];
+    double longitudeOrigem = _dadosRequisicao["origem"]["longitude"];
+
+    double distanciaEmMetros = await Geolocator().distanceBetween(
+      latitudeOrigem, longitudeOrigem, latitudeDestino, longitudeDestino);
+
+    //Converte para KM
+    double distanciaKM = distanciaEmMetros / 1000;
+
+    //8 é o valor cobrado por KM
+    double valorViagem = distanciaKM * 8;
+
+    var f = NumberFormat('#,##0.00', 'pt_BR');
+    var valorViagemFormatado = f.format(valorViagem);
+
+    _mensagemStatus = "Viagem finalizada";
+    _alterarBotaoPrincipal(
+      "Confirmar - R\$ ${valorViagemFormatado}", 
+      Color(0xff1ebbd8), 
+      (){
+        _confirmarCorrida();
+      }    
+    );     
+
+  }
+
+  _confirmarCorrida(){
+
+
 
   }
 

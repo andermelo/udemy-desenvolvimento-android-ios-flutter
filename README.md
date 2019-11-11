@@ -200,7 +200,7 @@
     1. [Atualizando e exibindo local do usuário - parte 2](#)
     1. [Iniciar corrida](#)
     1. [Exibindo destino do passageiro](#)
-    1. [Formatação de números](#)
+    1. [Formatação de números](teste_formatacao/)
     1. [Finalizando corrida e calculando valor](#)
     1. [Finalizando o App](#)
     

@@ -58,6 +58,7 @@ android {
   * [geolocator](https://pub.dev/packages/geolocator)
   * [Seleção automatica de imagens](https://flutter.dev/docs/development/ui/assets-and-images#declaring-resolution-aware-image-assets) :file_folder:
     * [Exemplo](../selecao_automatica_imagens)
+  * [intl](https://pub.dev/packages/intl)
 
  
 
