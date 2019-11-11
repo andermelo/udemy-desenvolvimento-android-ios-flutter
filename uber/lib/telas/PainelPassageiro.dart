@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'dart:async';
 import 'package:geolocator/geolocator.dart';
+import 'package:intl/intl.dart';
 import 'dart:io';
 import 'package:uber/model/Destino.dart';
 import 'package:uber/model/Marcador.dart';
@@ -336,6 +337,7 @@ class _PainelPassageiroState extends State<PainelPassageiro> {
       "Local motorista"
     );
 
+    _marcadores = {};
     Marcador marcadorDestino = Marcador(
       LatLng(latitudeDestino, longitudeDestino), 
       "images/destino.png", 
@@ -345,6 +347,80 @@ class _PainelPassageiroState extends State<PainelPassageiro> {
     _exibirCentralizarDoisMarcadores(marcadorOrigem, marcadorDestino);
     
 
+  }
+
+  _statusFinalizada() async{
+
+    //Calcula valor da corrida
+    double latitudeDestino = _dadosRequisicao["destino"]["latitude"];
+    double longitudeDestino = _dadosRequisicao["destino"]["longitude"];
+
+    double latitudeOrigem = _dadosRequisicao["origem"]["latitude"];
+    double longitudeOrigem = _dadosRequisicao["origem"]["longitude"];
+
+    double distanciaEmMetros = await Geolocator().distanceBetween(
+      latitudeOrigem, longitudeOrigem, latitudeDestino, longitudeDestino);
+
+    //Converte para KM
+    double distanciaKM = distanciaEmMetros / 1000;
+
+    //8 é o valor cobrado por KM
+    double valorViagem = distanciaKM * 8;
+
+    var f = NumberFormat('#,##0.00', 'pt_BR');
+    var valorViagemFormatado = f.format(valorViagem);
+
+    _alterarBotaoPrincipal(
+      "Total - R\$ ${valorViagemFormatado}", 
+      Colors.green, 
+      (){}    
+    );
+
+    Position position = Position(latitude: latitudeDestino,longitude: longitudeDestino);
+      
+    _exibirMarcador(position,"images/destino.png","Destino");
+
+    CameraPosition cameraPosition = CameraPosition(
+      target: LatLng(position.latitude, position.longitude),zoom: 19);
+      
+    _movimentarCamera(cameraPosition);     
+
+  }
+
+  _statusConfirmada(){
+
+    if(_streamSubscriptionRequisicoes != null)
+      _streamSubscriptionRequisicoes.cancel();
+    
+    _exibirCaixaEnderecoDestino = true;
+    _alterarBotaoPrincipal("Chamar Uber",Color(0xff1ebbd8), (){
+      _chamarUber();
+    });
+
+    _dadosRequisicao = {};
+
+  }
+  
+  _exibirMarcador(Position local, String icone, String infoWindow) async {
+
+    double pixelRatio = MediaQuery.of(context).devicePixelRatio;
+    BitmapDescriptor.fromAssetImage(
+        ImageConfiguration(devicePixelRatio: pixelRatio), 
+        icone
+    ).then((BitmapDescriptor bitmapDescriptor){
+
+      Marker marcador= Marker(
+        markerId: MarkerId(icone),
+        position: LatLng(local.latitude, local.longitude),
+        infoWindow: InfoWindow(title: infoWindow),
+        icon:  bitmapDescriptor
+      );
+
+      setState(() {
+        _marcadores.add(marcador); 
+      });
+
+    });
   }
 
   _exibirCentralizarDoisMarcadores(Marcador marcadorOrigem, Marcador marcadorDestino){
@@ -503,7 +579,10 @@ class _PainelPassageiroState extends State<PainelPassageiro> {
                     _statusEmViagem();
                     break;
                   case StatusRequisicao.FINALIZADA:
-                    
+                    _statusFinalizada();
+                    break;
+                  case StatusRequisicao.CONFIRMADA:
+                    _statusConfirmada();
                     break;
                 }
               }

@@ -178,6 +178,9 @@ class _CorridaState extends State<Corrida> {
                   case StatusRequisicao.FINALIZADA:
                     _statusFinalizada();
                     break;
+                  case StatusRequisicao.CONFIRMADA:
+                    _statusConfirmada();
+                    break;
                 }
               }
             });
@@ -359,12 +362,44 @@ class _CorridaState extends State<Corrida> {
       (){
         _confirmarCorrida();
       }    
-    );     
+    );
 
+    _marcadores = {};
+    Position position = Position(latitude: latitudeDestino,longitude: longitudeDestino);
+      
+    _exibirMarcador(position,"images/destino.png","Destino");
+
+    CameraPosition cameraPosition = CameraPosition(
+      target: LatLng(position.latitude, position.longitude),zoom: 19);
+      
+    _movimentarCamera(cameraPosition);     
+
+  }
+
+  _statusConfirmada(){
+
+    Navigator.pushReplacementNamed(context, "/painel-motorista"); 
+  
   }
 
   _confirmarCorrida(){
 
+    Firestore db = Firestore.instance;
+    db.collection("requisicoes")
+    .document( _idRequisicao )
+    .updateData({
+      "status" : StatusRequisicao.CONFIRMADA
+    });
+
+    String idPassageiro = _dadosRequisicao["passageiro"]["idUsuario"];
+    db.collection("requisicao_ativa")
+    .document( idPassageiro )
+    .delete();
+
+    String idMotorista = _dadosRequisicao["motorista"]["idUsuario"];
+    db.collection("requisicao_ativa_motorista")
+    .document( idMotorista )
+    .delete();
 
 
   }
