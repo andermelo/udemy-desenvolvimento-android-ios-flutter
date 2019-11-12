@@ -423,7 +423,7 @@ void main(){
 * DartPad - editor online para linguagem Dart [dartpad.dartlang.org](https://dartpad.dartlang.org/)
 * [Flutter](https://flutter.dev/docs)
 * Visual Studio Code
-* [Material Design](https://material.io/)
+* [Material Design](https://material.io)
 
 ## Referência Bibliográfica
 
