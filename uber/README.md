@@ -10,7 +10,7 @@ Entrar em `C:\Program Files\Java\jre1.8.0_221\bin`
 
 Comando: `keytool -list -v -alias androiddebugkey -keystore c:\Users\ander\.android\debug.keystore`
 
-Senha: `android` - padrão Android *ou apenas clique "Enter"*
+Senha: `android` - padrão Android ou apenas clique *"Enter"*
 
 #### Correção do erro em AndroidX
 
